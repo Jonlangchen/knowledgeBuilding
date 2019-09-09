@@ -10,3 +10,19 @@
 	2、外部样式表,
 	3、内部样式表(位于<head> 标签内部),
 	4、内联样式(位于 HTML 元素内部).
+
+## CSS 书写顺序
+	--(1)位置属性 ==> position,top, right,z-index,display,float 等;
+	--(2)大小 ==> width,height,padding,margin;
+	--(3)文字系列 ==> font,line-height,letter-spacing,color,text-align 等;
+	--(4)背景 ==> background,border 等;
+	--(5)其他 ==> animation, transition 等.
+
+## 分类的命名方法
+	--使用单个字母 + "-"为前缀.
+	 (1) 布局(grid) ==> .g-;
+	 (2) 模块(module) ==> .m-;
+	 (3) 元件(unit) ==> .u-;
+	 (4) 功能(function) ==> .f-;
+	 (5) 皮肤(skin) ==> .s-;
+	 (6) 状态 ==> .z-;
