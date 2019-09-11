@@ -116,6 +116,10 @@
 	--显示所有的数据库: show dbs
 	--显示当前使用的数据库: db/db.getName()
 	--删除当前数据库: db.dropDatabase()
+	--显示当前数据库中的集合(类似关系数据库中的表): show collections
+	--查看当前数据库的用户信息: show users
+	--切换数据库跟mysql一样: use 数据库名称
+	
 ### Collection 相关操作(collection 可以理解为相似数据的集合,和关系型数据库中 table 的概念相似.)
 	--显示当前数据库中的所有 collection: show collections
 	--创建新的 collection: db.createCollection(name)
