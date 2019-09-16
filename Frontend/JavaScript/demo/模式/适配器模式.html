@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//(1)框架适配器
+			//比如说: window.A = A = jQuery;
+			//简单的适配了jQuery框架和A框架,可以同时用A来使用两个框架的方法.如果A框架有重写jQuery的方法的话,则会执行A框架.
+			
+			//(2)参数适配,数据适配.其实就是把一个数据格式通过函数转化成另一种格式.
+			var arr = ['js模式', '2016-12-13', 'baishiup'];
+			function arrToINeed(arr) {
+				return {
+					title: arr[0],
+					data: arr[1],
+					username: arr[2]
+				}
+			}
+			console.dir(arrToINeed(arr));
+		</script>
+	</body>
+</html>

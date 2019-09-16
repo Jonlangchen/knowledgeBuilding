@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//无法修改的静态变量
+			var Conf = (function() {
+				//私有变量
+				var conf = {
+					MAX_NUM: 100,
+					MIN_NUM: 1,
+					COUNT: 1000
+				}
+				//返回取值器对象
+				return {
+					//取值器方法
+					get: function(name) {
+						return conf[name] ? conf[name] : null;
+					}
+				}
+			})();
+			var count = Conf.get('COUNT');
+			console.log(count);  //1000
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>装饰者模式</title>
+	</head>
+	<body>
+		<div id="demo">点我</div>
+		<script>
+			//装饰旧方法.修改历史代码的时候,可以用装饰者模式,在不修改原有代码的基础上,对旧代码的事件进行修改.
+			var demo = document.getElementById('demo');
+			demo.onclick = function() {
+				console.log('old fun');
+			};
+			
+			var decorator = function(id, fn) {
+				var dom = document.getElementById(id);
+				if(typeof dom.onclick === 'function') { //如果该DOM有绑定事件
+					var oldFun = dom.onclick; //获取旧事件
+					dom.onclick = function() { //绑定新事件
+						oldFun(); //执行老事件
+						fn(); //执行新绑定事件
+					}
+				} else { //如果该DOM没有绑定事件,直接为dom添加事件
+					dom.onclick = fn;
+				}
+			};
+			
+			decorator('demo', function() {
+				console.log('new fun');
+			});
+		</script>
+	</body>
+</html>

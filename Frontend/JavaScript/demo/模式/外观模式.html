@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>外观模式</title>
+	</head>
+	<body>
+		<!-- 例1 -->
+		<div id="box">呵呵呵呵呵呵</div>
+		<!-- 例2 -->
+		<div id="content">哈哈哈哈</div>
+		<div id="demo">噢噢噢噢</div>
+		<div id="kkk">咔咔咔咔咔咔</div>
+		<script>
+			//(1)在对页面dom绑定原生点击事件的时候,dom2级会覆盖dom0级的操作;IE9不兼容addEventListener,而不支持dom2级的浏览器,
+			//又只能用dom0级的onclick.外观模式可以把一些兼容方法或者复杂的方法简化.
+			
+			//兼容方法
+			function addEvent(dom, type, fn) {
+				if(dom.addEventListener) { //dom2
+					dom.addEventListener(type, fn, flase);	
+				}else if(dom.attachEvent) { //不支持dom2的浏览器
+					dom.attachEvent('on' + type, fn);	
+				}else { //都不支持的老浏览器
+					dom['on' + type] = fn;
+				}
+			};
+			
+			//简化复杂的方法
+			//例1
+			var A = {
+				css: function(id, key, value) {
+					document.getElementById(id).style[key] = value;
+				},
+				attr: function(id, key, value) {
+					document.getElementById(id)[key] = value;
+				}
+			};
+			A.css('box', 'color', 'green');
+			
+			//外观模式也可译为门面模式.它为子系统中的一组接口提供一个一致的界面,Facade模式定义了一个高层接口这个接口使得这一
+			//子系统更加容易使用.引入外观角色之后,使用者只需要直接与外观角色交互,使用者与子系统之间的复杂关系由外观角色来实现,
+			//从而降低了系统的耦合度.
+						
+			//比如在家要看电影,需要打开音响,再打开投影仪,再打开播放器等等,引入外观角色之后,只需要调用"打开电影设备"方法就可以.
+			//外观角色封装了打开投影仪等操作,给使用者提供更容易使用的方法.
+						
+			//作用:
+		  //1.简化复杂接口
+		  //2.解耦合,屏蔽使用者对子系统的直接访问
+						
+			//在形式上,外观模式在javascript 中就像这样:
+			function a(x) {
+				//do something
+			}
+			function b(y) {
+				//do something
+			}
+			function ab(x, y) {
+				a(x);
+				b(y);
+			}
+						
+			//下面一个例子,把阻止冒泡和阻止默认事件放到了外观角色中
+			var N = window.N || {};
+			N.tools = {
+				stopBubble: function(e) { //阻止冒泡行为
+					if(e && e.stopPropagation) { //如果提供了事件对象，则这是一个非IE浏览器
+						e.stopPropagation(); ////因此它支持W3C的stopPropagation()方法
+					}else {
+						window.event.cancleBubble = true; //否则，我们需要使用IE的方式来取消事件冒泡
+					}
+				},
+				stopDefault: function(e) { //阻止浏览器的默认行为
+					if(e && e.preventDefault) { //阻止默认浏览器动作(W3C)
+						e.preventDefault();
+					}else { //IE中阻止函数器默认动作的方式
+						window.event.returnValue = false;
+					}
+					return false;
+				},
+				stopEvent: function(e) {
+					N.tools.stopBubble(e);
+					N.tools.stopDefault(e);
+				}
+			}
+			//例2
+			//比如经常用JS 设置元素的颜色/尺寸
+			var element = document.getElementById('content');
+			element.style.color = 'red';
+			element.style.height = '200px';
+			
+			//可以对这个操作这样包装:
+			function setStyles(id, styles) {
+				var element = document.getElementById(id);
+				for(var key in styles) {
+					if(styles.hasOwnProperty(key)) {
+						element.style[key] = styles[key];
+					}
+				}
+			}
+			
+			setStyles('content', {
+				color: 'red',
+				height: '200px'
+			});
+						
+			//如果有一批元素,需要设置同样的属性,可以进行再次包装
+			function setCss(ids, styles) {
+				for(var i = 0, len = ids.length; i < len; i++) {
+					setStyles(ids[i], styles);
+				}
+			}
+			
+			var Ids = ['content', 'demo', 'kkk'];
+			setCss(Ids, {
+				color: 'green',
+				height: '50px'
+			});
+			
+			//外观模式在 javascript 的应用主要可以分为两类,某块代码反复出现,比如函数a的调用基本都出现在函数b的调用之前,那么
+			//可以考虑考虑将这块代码使用外观角色包装一下来优化结构.还有一种就是对于一些浏览器不谦容的API,放置在外观内部进行判
+			//断,处理这些问题最好的方式便是将跨浏览器差异全部集中放置到一个外观模式实例中来提供一个对外接口.
+		</script>
+	</body>
+</html>
