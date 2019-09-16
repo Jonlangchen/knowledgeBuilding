@@ -69,7 +69,8 @@
 	 { role: "read", db: "game_report" }
 	 ]});
 		enter后显示 Successfully added user:{"user": "admin", "roles": [{ role: "userAdminAnyDatabase", db: "admin" }]}.
-
+		
+	**root db.createUser({user: "username",pwd: "jklbnm"});
 ## 启动 mongodb 服务
 	--打开 cmd 命令行，进入 mongod\bin 目录下;
 	--输入如下的命令启动mongodb服务：mongod --dbpath F:\mytool\mongo\mongod\data\db;
@@ -108,6 +109,34 @@
 	内置角色只能控制User在DB级别上执行的操作,管理员可以创建自定义角色,控制用户在集合级别（Collection-Level）上执行的操作,
 	即控制User在当前DB的特定集合上执行特定的操作.
 
+### 用户管理
+#### 添加用户
+	--通过mongo shell终端操作,用户保存在admin数据库system.user集合中.
+	(1)添加普通用户
+	 --切换到需要添加用户的db: use xxxx
+	 --db.createUser()
+	(2)添加超级用户
+	 --切换到admin数据库: use admin
+	 --db.createUser()
+#### 删除用户
+	--切换到用户授权的db: use XX
+	--执行删除操作: db.dropUser('username')
+#### 更新用户
+	--切换到用户授权的db: use XX
+	--执行更新,字段会覆盖原来的内容
+	 db.updateUser("username", {pwd: "new password", customData: {"title": "PHP developer"}})
+#### 更新用户密码
+	--切换到用户授权的db: use XX
+	--db.changeUserPassword("username", "newPassword")
+#### 查看用户信息
+	--切换到admin数据库: use admin
+	--db.getUser("username")
+#### 删除用户角色
+	--切换到用户授权的db: use XX
+	--db.revokeRolesFromUser("username", [{role: "readWrite", db: "accounts"}])
+#### 添加用户角色
+	--切换到用户授权的db: use XX
+	--db.grantRolesToUser("reportsUser", [role: "read", db: "accounts"])
 	
 ## 常用命令
 	--启动 MongoDB : mongod --dbpath [mongodb path]/data/db
@@ -119,6 +148,10 @@
 	--显示当前数据库中的集合(类似关系数据库中的表): show collections
 	--查看当前数据库的用户信息: show users
 	--切换数据库跟mysql一样: use 数据库名称
+	--当前db版本: db.version()
+	--查看当前db的连接机器地址: db.getMongo()
+	--显示数据库操作命令: db.help()
+	--对于当前数据库中的foo集合进行数据查找(由于没有条件，会列出所有数据): db.foo.find()
 	
 ### Collection 相关操作(collection 可以理解为相似数据的集合,和关系型数据库中 table 的概念相似.)
 	--显示当前数据库中的所有 collection: show collections
