@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>梯形导航条</title>
+		<style>
+			li {
+				list-style-type: none;
+				display: inline-block;
+				width: 80px;
+				height: 32px;
+				line-height: 32px;
+				margin-left: -16px;
+				text-align: center;
+			}
+			.demo li {
+			  position: relative;
+			}
+			.demo li::after {
+			  content: '';
+			  position: absolute;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  top: 0;
+			  z-index: -1;
+			  background: #2175BC;
+			  -moz-transform: perspective(0.5em) rotateX(5deg);
+				-ms-transform: perspective(0.5em) rotateX(5deg);
+				-webkit-transform: perspective(0.5em) rotateX(5deg);
+				transform: perspective(0.5em) rotateX(5deg);
+				-moz-transform-origin: bottom;
+				-webkit-transform-origin: bottom;
+				transform-origin: bottom;
+				border: 1px solid #E0E0E0;
+				/* 用于控制梯形是左倾斜还是右倾斜的属性是transform-origin。梯形不倾斜：bottom。左倾斜：bottom left；
+				右倾斜：bottom right */
+			}
+			.demo li:hover::after {
+			  background: #3B9BE5;
+			}
+			.demo li:hover {
+				z-index: 0;
+			}
+			.zIndex {
+				z-index: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo">
+			<ul>
+				<li>demo</li>
+				<li>demo</li>
+				<li>demo</li>
+				<li>demo</li>
+				<li>demo</li>
+				<li>demo</li>
+			</ul>
+		</div>
+		<script src="../jquery.js"></script>
+		<script>
+			$('.demo li').click(function(event) {
+			        $('.demo li').removeClass('zIndex');
+			        $(this).addClass('zIndex');
+			});
+		</script>
+	</body>
+</html>
