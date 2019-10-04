@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>获取元素</title>
+	</head>
+	<body>
+		<script>
+			// 有3种 DOM 方法可获取元素节点,分别通过元素 ID,通过标签名字和通过类名字来获取.
+			// (1) getElementById 该方法返回一个与那个有着给定 ID 属性值的元素节点对应的对象.
+			
+			// (2) getElementsByTagName 该方法返回一个数组,每个对象分别对应着文档里有着给定标签的一个元素.
+			
+			// (3) getElementsByClassName 该方法通过 class 属性中的类名来访问元素.
+			// 兼容写法:
+			function getElementsByClassName(node, classname) {
+				if (node.getElementsByClassName) { //使用现有方法
+					return node.getElementsByClassName(classname);
+				} else {
+					var results = new Array();
+					var elems = node.getElementsByTagName("*");
+					for (var i = 0; i < elems.length; i++) {
+						if (elems[i].className.indexOf(classname) != -1) {
+							return [results.length] = elems[i];
+						}
+					}
+					return results;
+				}
+			}
+		</script>
+	</body>
+</html>

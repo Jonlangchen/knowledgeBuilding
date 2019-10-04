@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>onload绑定函数弹性最佳解决方案</title>
+	</head>
+	<body>
+		<script>
+			// 不管在页面加载完毕时执行多少个函数
+			function addLoadEvent(func) {
+				var oldonload = window.onload;
+				if (typeof window.onload != 'function') {
+					window.onload = func;
+				} else {
+					window.onload = function() {
+						oldonload();
+						func();
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

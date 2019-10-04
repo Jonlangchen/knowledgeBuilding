@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>insertAfter 方法</title>
+	</head>
+	<body>
+		<script>
+			// 参数:
+			// newElement: 将被插入的新元素
+			// targetElement: 目标元素
+			function insertAfter(newElement, targetElement) {
+				var parent = targetElement.parentNode;
+				if (parent.lastChild == targetElement) {
+					parent.appendChild(newElement);
+				} else {
+					parent.insertBefore(newElement,targetElement.nextSibling);
+				}
+			}
+		</script>
+	</body>
+</html>
