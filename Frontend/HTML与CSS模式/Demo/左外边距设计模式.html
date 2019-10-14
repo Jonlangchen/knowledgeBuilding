@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>左外边距(Left Marginal)设计模式</title>
+		<style>
+			.left-marginal {
+				position: relative;
+				margin-left: 200px;
+			}
+			.marginal-heading {
+				position: absolute;
+				top: 0;
+				left: -200px;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 此模式核心理念为把一个或多个元素移出块状元素，使其靠近左外边距，这样就可以把标题(或注释、图片等)
+		 放在左边，而把内容放在右边。-->
+		<h1>左外边距</h1>
+		<div class="left-marginal">
+			<h2 class="marginal-heading">标题</h2>
+			把一个元素提取出来移至左外边距中。
+		</div>
+	</body>
+</html>
