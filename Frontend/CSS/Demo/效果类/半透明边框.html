@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>半透明边框</title>
+		<style>
+			body {
+				background: #58a;
+			}
+			.demo1 {
+				max-width: 20em;
+				padding: 2em;
+				margin: 2em auto 0;
+				
+				border: 10px solid hsla(0, 0%, 100%, .5);
+				background: white;
+				background-clip: padding-box;
+			}
+			
+			.demo2 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: yellowgreen;
+				box-shadow: 0 0 0 10px #655,
+										0 0 0 15px deeppink,
+										0 2px 5px 15px rgba(0, 0, 0, .6);
+			}
+			
+			.demo3 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: yellowgreen;
+				border: 10px solid #655;
+				outline: 5px solid deeppink;
+			}
+			
+			.demo4 {
+				padding: .8em;
+				background: #655;
+			}
+			.demo4 > div {
+				background: tan;
+				border-radius: .8em;
+				padding: 1em;
+			}
+			
+			.demo5 {
+				background: tan;
+				border-radius: .8em;
+				padding: 1em;
+				box-shadow: 0 0 0 .6em #655;
+				outline: .6em solid #655;
+			}
+			
+			.demo6 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: linear-gradient(#fb3, #655);
+			}
+			
+			.demo7 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: linear-gradient(#fb3 50%, #655 50%);
+				background-size: 100% 30px;
+			}
+			
+			.demo8 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: linear-gradient(to right, #fb3 50%, #655 0);
+				background-size: 30px 100%;
+			}
+			
+			.demo9 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: linear-gradient(45deg, #fb3 50%, #655 0);
+				background-size: 30px 30px;
+			}
+			
+			.demo10 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: linear-gradient(45deg, 
+																		#fb3 25%, #655 0,
+																		#655 50%, #fb3 0,
+																		#fb3 75%, #655 0);
+				background-size: 42.426406871px 42.426406871px;
+			}
+			
+			.demo11 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: repeating-linear-gradient(45deg, #fb3, #655 30px);
+			}
+			
+			.demo12 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: repeating-linear-gradient(60deg, #fb3, #fb3 15px,
+																							#655 0, #655 30px);
+			}
+			
+			.demo13 {
+				width: 100px;
+				height: 60px;
+				margin: 25px;
+				background: pink;
+				background: repeating-linear-gradient(30deg, 
+																							hsla(0, 0%, 100%, .1),
+																							hsla(0, 0%, 100%, .1) 15px,
+																							transparent 0, 
+																							transparent 30px);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo1">11111</div>
+		
+		<div class="demo2"></div>
+		
+		<div class="demo3"></div>
+		
+		<div class="demo4">
+			<div>边框内圆角</div>
+		</div>
+		
+		<div class="demo5">边框内圆角</div>
+		
+		<div class="demo6">线性渐变</div>
+		
+		<div class="demo7">线性渐变</div>
+		
+		<div class="demo8">垂直条纹</div>
+		
+		<div class="demo9">斜向条纹</div>
+		
+		<div class="demo10">斜向条纹</div>
+		
+		<div class="demo11">斜向条纹</div>
+		
+		<div class="demo12">斜向条纹</div>
+		
+		<div class="demo13"></div>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>background</title>
+		<style>
+			.demo1 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: white;
+				background-image: linear-gradient(90deg,
+																					rgba(200, 0, 0, .5) 50%, transparent 0),
+																					linear-gradient(
+																					 rgba(200, 0, 0, .5) 50%, transparent 0);
+				background-size: 30px 30px;
+			}
+			
+			.demo2 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #58a;
+				background-image: linear-gradient(
+																					white 1px, transparent 0),
+																					linear-gradient(90deg,
+																					 white 1px, transparent 0);
+				background-size: 30px 30px;
+			}
+			
+			.demo3 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #58a;
+				background-image: 
+											linear-gradient(white 2px, transparent 0),
+											linear-gradient(90deg, white 2px, transparent 0),
+											linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0),
+											linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+				background-size: 75px 75px, 75px 75px,
+												 15px 15px, 15px 15px;
+			}
+			
+			.demo4 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #655;
+				background-image: radial-gradient(tan 30%, transparent 0);
+				background-size: 30px 30px;
+			}
+			
+			.demo5 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #655;
+				background-image: radial-gradient(tan 30%, transparent 0),
+													radial-gradient(tan 30%, transparent 0);
+				background-size: 30px 30px;
+				background-position: 0 0, 15px 15px;
+			}
+			
+			.demo6 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #eee;
+				background-image: linear-gradient(45deg, #bbb 25%, transparent 0),
+													linear-gradient(45deg, transparent 75%, #bbb 0),
+													linear-gradient(45deg, #bbb 25%, transparent 0),
+													linear-gradient(45deg, transparent 75%, #bbb 0);
+				background-size: 30px 30px;
+				background-position: 0 0, 15px 15px,
+														 15px 15px, 30px 30px;
+			}
+			
+			.demo7 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: conic-gradient(red, yellow, lime, aqua, blue, fuchsia, red);
+			}
+			
+			.demo8 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: repeating-conic-gradient(#bbb 0, #bbb 25%, #eee 0, #eee 50%);
+				background-size: 30px 30px;
+			}
+			
+			.demo9 {
+				width: 200px;
+				height: 150px;
+				margin: 25px;
+				background: #eee url('data:image/svg+xml,\
+				 <svg xmlns="http://www.w3.org/2000/svg" \
+				 width="100" height="100" \
+				 fill-opacity=".25">\
+				 <rect x="50" width="50" height="50" /> \
+				 <rect y="50" width="50" height="50" /> \
+				 </svg>');
+				background-size: 30px 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill-opacity=".25">
+			<rect x="50" width="50" height="50" />
+			<rect y="50" width="50" height="50" />
+		</svg>
+		
+		<div class="demo1"></div>
+		
+		<div class="demo2"></div>
+		
+		<div class="demo3"></div>
+		
+		<div class="demo4"></div>
+		
+		<div class="demo5"></div>
+		
+		<div class="demo6"></div>
+		
+		<div class="demo7"></div>
+		
+		<div class="demo8"></div>
+		
+		<div class="demo9"></div>
+		
+		<div class="demo10"></div>
+	</body>
+</html>

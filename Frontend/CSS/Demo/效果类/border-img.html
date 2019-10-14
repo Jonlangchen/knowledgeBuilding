@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>border-image</title>
+		<style>
+			.demo1 {
+				background: url(3.jpg);
+				background-size: cover;
+				padding: 1em;
+			}
+			.demo1 > div {
+				background: white;
+				padding: 1em;
+			}
+			
+			.demo2 {
+				margin: 25px;
+				padding: 1em;
+				border: 1em solid transparent;
+				background: linear-gradient(white, white),
+										url(3.jpg);
+				background-size: cover;
+				background-clip: padding-box, border-box;
+				background-origin: border-box;
+			}
+			
+			.demo3 {
+				margin: 25px;
+				padding: 1em;
+				border: 1em solid transparent;
+				background: linear-gradient(white, white) padding-box,
+										repeating-linear-gradient(-45deg,
+										 red 0, red 12.5%,
+										 transparent 0, transparent 25%,
+										 #58a 0, #58a 37.5%,
+										 transparent 0, transparent 50%)
+										 0 / 5em 5em;
+			}
+			
+			.demo4 {
+				margin: 25px;
+				padding: 1em;
+				border: 16px solid transparent;
+				border-image: 16px repeating-linear-gradient(-45deg,
+														red 0, red 1em,
+														transparent 0, transparent 2em,
+														#58a 0, #58a 3em,
+														transparent 0, transparent 4em);
+			}
+			
+			@keyframes ants{
+				to{
+					background-position: 100%;
+				}
+			}
+			.demo5 {
+				margin: 25px;
+				padding: 1em;
+				border: 1em solid transparent;
+				background: linear-gradient(white, white) padding-box,
+										repeating-linear-gradient(-45deg,
+										 black 0, black 25%, white 0, white 50%
+										 ) 0 / .6em .6em;
+				animation: ants 12s linear infinite;
+			}
+			
+			.demo6 {
+				margin: 25px;
+				border-top: .2em solid transparent;
+				border-image: 100% 0 0 linear-gradient(90deg,
+																	currentColor 4em,
+																	transparent 0);
+				padding-top: 1em;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo1">
+			<div>border-image</div>
+		</div>
+		
+		<div class="demo2"></div>
+		<div class="demo3"></div>
+		<div class="demo4">11111111111</div>
+		<div class="demo5"></div>
+		<div class="demo6"></div>
+		<div class="demo7"></div>
+		<div class="demo8"></div>
+	</body>
+</html>

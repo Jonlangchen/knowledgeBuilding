@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>button</title>
+		<style>
+			.demo {
+				width: 300px;
+				height: 300px;
+				margin: 0 auto;
+				font-size: 16px;
+				border: 1px solid #58a;
+			}
+			/* .demo input {
+				padding: 6px 16px;
+				color: white;
+				font-size: 20px;
+				line-height: 30px;
+				text-shadow: 0 -1px 1px #335166;
+				border: 1px solid #446d88;
+				background: #58a linear-gradient(#77a0bb, #58a);
+				border-radius: 4px;
+				box-shadow: 0 1px 5px gray;
+			} */
+			
+			.demo input {
+				padding: .3em .8em;
+				color: white;
+				font-size: 125%; /* 假设父级的字号是 16px */
+				line-height: 1.5;
+				text-shadow: 0 -.05em .05em rgba(0, 0, 0, .5);
+				border: 1px solid rgba(0, 0, 0, .1);
+				background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+				border-radius: .2em;
+				box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
+			}
+			.demo .cancel {
+				margin-top: 20px;
+				background-color: #c00;
+			}
+			.demo .ok {
+				margin-top: 20px;
+				background-color: #6b0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 代码可维护性的最大要素是尽量减少改动时要编辑的地方。 -->
+		<!-- 当某些值相互依赖时，应该把它们的相互关系用代码表达出来。 -->
+		
+		<div class="demo">
+			<input type="button" value="Yes!">
+			<br>
+			<input class="cancel" type="button" value="Cancel">
+			<br>
+			<input class="ok" type="button" value="OK">
+		</div>
+	
+	</body>
+</html>

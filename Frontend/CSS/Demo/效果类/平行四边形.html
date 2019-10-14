@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>平行四边形</title>
+		<style>
+			/* div {
+				width: 40px;
+				height: 30px;
+				margin: 100px;
+				background: #fb3;
+			} */
+			.demo1 {
+				width: 40px;
+				height: 30px;
+				margin: 100px;
+				background: #fb3;
+				transform: skewX(-45deg);
+			}
+			
+			.demo2 {
+				width: 40px;
+				height: 30px;
+				margin: 100px;
+				background: #fb3;
+				transform: skewX(-45deg);
+			}
+			.demo2 > span {
+				display: inline-block;
+				transform: skewX(45deg);
+			}
+			
+			.demo3 {
+				position: relative;
+				width: 40px;
+				height: 30px;
+				margin: 100px;
+			}
+			.demo3::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: -1;
+				background: #fb3;
+				transform: skew(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo1">click me</div>
+		<div class="demo2"><span>click me</span></div>
+		<div class="demo3">click</div>
+		<div class="demo4"></div>
+		<div class="demo5"></div>
+		<div class="demo6"></div>
+		<div class="demo7"></div>
+		<div class="demo8"></div>
+		<div class="demo9"></div>
+		<div class="demo10"></div>
+	</body>
+</html>
