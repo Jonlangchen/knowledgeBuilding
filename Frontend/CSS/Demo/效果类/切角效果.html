@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>切角效果</title>
+		<style>
+			.demo1 {
+				width: 200px;
+				height: 150px;
+				margin: 20px;
+				background: #58a;
+				background: linear-gradient(-45deg, transparent 15px, #58a 0);
+			}
+			
+			.demo2 {
+				width: 200px;
+				height: 150px;
+				margin: 20px;
+				background: #58a;
+				background: linear-gradient(-45deg, transparent 15px, #58a 0),
+										linear-gradient(45deg, transparent 15px, #655 0);
+			}
+			
+			.demo3 {
+				width: 200px;
+				height: 150px;
+				margin: 20px;
+				background: #58a;
+				background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+										linear-gradient(45deg, transparent 15px, #655 0) left;
+				background-size: 50% 100%;
+			}
+			
+			.demo4 {
+				width: 200px;
+				height: 150px;
+				margin: 20px;
+				background: #58a;
+				background: linear-gradient(-45deg, transparent 15px, #58a 0) right,
+										linear-gradient(45deg, transparent 15px, #655 0) left;
+				background-size: 50% 100%;
+				background-repeat: no-repeat;
+			}
+			
+			.demo5 {
+				width: 200px;
+				height: 150px;
+				margin: 20px;
+				background: #58a;
+				background: linear-gradient(135deg, transparent 15px, #58a 0) top left,
+										linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+										linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+										linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+				background-size: 50% 50%;
+				background-repeat: no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo1"></div>
+		
+		<div class="demo2"></div>
+		
+		<div class="demo3"></div>
+		
+		<div class="demo4"></div>
+		
+		<div class="demo5"></div>
+	</body>
+</html>

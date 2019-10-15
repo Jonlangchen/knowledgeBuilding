@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>菱形</title>
+		<style type="text/css">
+			.demo1 {
+				width: 160px;
+				margin: 20px;
+				transform: rotate(45deg);
+				overflow: hidden;
+			}
+			/* 八边形 */
+			.demo1 > img {
+				max-width: 100%; /* 解析为 demo1 的边长*/
+				transform: rotate(-45deg);
+			}
+			/* 菱形 */
+			.demo1 > img {
+				max-width: 100%;
+				transform: rotate(-45deg) scale(1.42);
+			}
+			
+			.demo2 {
+				clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+				transition: 1s clip-path;
+			}
+			.demo2:hover {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo1">
+			<img src="3.jpg" alt="...">
+		</div>
+		
+		<img class="demo2" src="3.jpg" alt="...">
+	</body>
+</html>
