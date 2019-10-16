@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>通过阴影来弱化背景</title>
+		<style>
+			/* box-shadow 方案 */
+			/* .lightbox {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-left: -200px;
+				box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .8);
+			} */
+			
+			/* backdrop 方案 */
+			dialog::backdrop {
+				background: rgba(0, 0, 0, .8);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <img src="3.jpg" alt="" class="lightbox"> -->
+		
+		<button onclick="document.querySelector('#modal').showModal()">Click me</button>
+		<dialog id="modal">
+		O HAI!
+		<button onclick="this.parentNode.close()">Close</button>
+		</dialog>
+		
+	</body>
+</html>

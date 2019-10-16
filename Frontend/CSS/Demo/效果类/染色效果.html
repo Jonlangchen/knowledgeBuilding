@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>染色效果</title>
+		<style>
+			.demo {
+				/* width: 80px; */
+				/* height: 80px; */
+				/* margin: 20px; */
+			}
+			.demo1 {
+				transition: .5 filter;
+				filter:　sepia(1) saturate(4) hue-rotate(295deg);
+			}
+			.demo1:hover,
+			.demo1:focus {
+				filter: none;
+			}
+			
+			.aa {
+				background: hsl(335, 100%, 50%);
+			}
+			.demo2 {
+				mix-blend-mode: luminosity;
+			}
+			
+			.demo3 {
+				width: 80px;
+				height: 80px;
+				background-size: cover;
+				background-color: hsl(335, 100%, 50%);
+				background-blend-mode: luminosity;
+				transition: .5s background-color;
+			}
+			.demo3:hover {
+				background-color: transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="3.jpg" alt="" class="demo demo1">
+		<a href=".." class="aa">
+			<img src="3.jpg" alt="" class="demo demo2">
+		</a>
+		
+		
+		<div class="demo3" style="background-image:url(3.jpg)"></div>
+	</body>
+</html>

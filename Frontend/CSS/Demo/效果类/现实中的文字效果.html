@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>现实中的文字效果</title>
+		<style type="text/css">
+			.demo1 {
+				background: hsl(210, 13%, 60%);
+				color: hsl(210, 13%, 30%);
+			}
+			/* 凸版印刷效果 */
+			.demo2 {
+				font-size: 20px;
+				background: hsl(210, 13%, 60%);
+				color: hsl(210, 13%, 30%);
+				/* text-shadow: 0 1px 1px hsla(0, 0%, 100%, .8); */
+				text-shadow: 0 .03em .03em hsla(0, 0%, 100%, .8);
+			}
+			.demo3 {
+				background: hsl(210, 13%, 40%);
+				color: hsl(210, 13%, 75%);
+				text-shadow: 0 -1px 1px black;
+			}
+			.demo5 {
+				background: deeppink;
+				color: white;
+				text-shadow: 1px 1px black, -1px -1px black,
+											1px -1px black, -1px 1px black;
+			}
+			.demo6 {
+				background: deeppink;
+				color: white;
+				text-shadow: 0 0 1px black, 0 0 1px black,
+											0 0 1px black, 0 0 1px black,
+											0 0 1px black, 0 0 1px black;
+			}
+			h1 {
+				font: 500%/1 Rockwell, serif;
+				background: deeppink;
+				color: white;
+			}
+			h1 text {
+				fill: currentcolor;
+			}
+			h1 svg {
+				overflow: visible;
+			}
+			h1 use {
+				stroke: black;
+				stroke-width: 6;
+				stroke-linejoin: round;
+			}
+			/* 文字外发光效果 */
+			.demo7 {
+				background: #203;
+				color: white;
+				transition: 1s;
+			}
+			.demo7:hover {
+				text-shadow: 0 0 .1em, 0 0 .3em;
+			}
+			
+			.demo8 {
+				background: #203;
+				color: white;
+				transition: 1s;
+			}
+			.demo8:hover {
+				color: transparent;
+				text-shadow: 0 0 .1em white, 0 0 .3em white; 
+			}
+			
+			.demo9 {
+				background: #203;
+				color: white;
+				transition: 1s;
+			}
+			.demo9:hover {
+				filter: blur(.1em);
+			}
+			
+			/* 文字凸起效果 */
+			.demo10 {
+				background: #58a;
+				color: white;
+				font-size: 20px;
+				text-shadow: 0 1px hsl(0, 0%, 85%),
+											0 2px hsl(0, 0%, 80%),
+											0 3px hsl(0, 0%, 75%),
+											0 4px hsl(0, 0%, 70%),
+											0 5px hsl(0, 0%, 65%),
+											0 5px 10px black;
+			}
+			
+			.demo11 {
+				color: white;
+				background: hsl(0, 50%, 45%);
+				text-shadow: 1px 1px black, 2px 2px black,
+											3px 3px black, 4px 4px black,
+											5px 5px black, 6px 6px black,
+											7px 7px black, 8px 8px black;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="demo1">The only way to get rid of a temptation is to yield to it.</p>
+		
+		<p class="demo2">The only way to get rid of a temptation is to yield to it.</p>
+		
+		<p class="demo3">The only way to get rid of a temptation is to yield to it.</p>
+		
+		<p class="demo5">The only way to get rid of a temptation is to yield to it.</p>
+		<p class="demo6">The only way to get rid of a temptation is to yield to it.</p>
+		
+		<h1>
+			<svg width="2em" height="1.2em">
+				<use xlink:href="#css"></use>
+				<text id="css" y="1em">CSS</text>
+			</svg>
+		</h1>
+		
+		<a href="" class="demo7">Glow</a>
+		<a href="" class="demo8">Glow</a>
+		<a href="" class="demo9">Glow</a>
+		
+		<span class="demo10">CSS3d</span>
+		<span class="demo11">CSS3d</span>
+	</body>
+</html>

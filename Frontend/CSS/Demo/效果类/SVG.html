@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SVG</title>
+		<style>
+			.demo1 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+			}
+			
+			.demo2 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+				stroke-dasharray: 20 10;
+			}
+			
+			.demo3 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+				stroke-dasharray: 0 189;
+			}
+			
+			.demo4 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+				stroke-dasharray: 40 189;
+			}
+			
+			.demo5 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+				stroke-dasharray: 95 189;
+			}
+			
+			.demo6 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 30;
+				stroke-dasharray: 150 189;
+			}
+			
+			.demo7 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 50;
+				stroke-dasharray: 60 158;
+			}
+			.svg1 {
+				transform: rotate(-90deg);
+				background: yellowgreen;
+				border-radius: 50%;
+			}
+			
+			.demo8 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 50;
+				stroke-dasharray: 0 158;
+				animation: fillup 5s linear infinite;
+			}
+			
+			@keyframes fillup {
+				to { stroke-dasharray: 158 158; }
+			}
+			
+			.svg2 {
+				width: 100px;
+				height: 100px;
+				transform: rotate(-90deg);
+				background: yellowgreen;
+				border-radius: 50%;
+			}
+			.demo9 {
+				fill: yellowgreen;
+				stroke: #655;
+				stroke-width: 32;
+				stroke-dasharray: 38 100;
+			}
+		</style>
+	</head>
+	<body>
+		<svg width="100" height="100">
+			<circle class="demo1" r="30" cx="50" cy="50"></circle>
+		</svg>
+		
+		<svg width="100" height="100">
+			<circle class="demo2" r="30" cx="50" cy="50"></circle>
+		</svg>
+		
+		<svg width="100" height="100">
+			<circle class="demo3" r="30" cx="50" cy="50"></circle>
+		</svg>
+		<svg width="100" height="100">
+			<circle class="demo4" r="30" cx="50" cy="50"></circle>
+		</svg>
+		<svg width="100" height="100">
+			<circle class="demo5" r="30" cx="50" cy="50"></circle>
+		</svg>
+		<svg width="100" height="100">
+			<circle class="demo6" r="30" cx="50" cy="50"></circle>
+		</svg>
+		
+		<svg width="100" height="100" class="svg1">
+			<circle class="demo7" r="25" cx="50" cy="50"></circle>
+		</svg>
+		
+		<svg width="100" height="100" class="svg1">
+			<circle class="demo8" r="25" cx="50" cy="50"></circle>
+		</svg>
+		
+		<svg viewBox="0 0 32 32" class="svg2">
+			<circle class="demo9" r="16" cx="16" cy="16"></circle>
+		</svg>
+	</body>
+</html>
