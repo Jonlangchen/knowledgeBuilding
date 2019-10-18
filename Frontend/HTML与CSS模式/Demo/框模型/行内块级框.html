@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>行内块级框</title>
+		<style>
+			.replaced-box {
+				display: inline-block;
+				width: 51px;
+				height: 52px;
+				margin: 10px 100px;
+				padding: 10px 120px;
+				overflow: visible;
+				visibility: visible;
+			}
+			.inline-box {
+				display: inline-block;
+				width: 275px;
+				height: 52px;
+				margin: 10px 100px;
+				padding: 10px 120px;
+				overflow: visible;
+				visibility: visible;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Inline-block Box</h1>
+		<div class="container">
+			<span class="default">BEFORE</span>
+			<img src="../4.jpg" alt="..." class="replaced-box" />
+			<span class="default">AFTER</span>
+			
+			<span class="default">BEFORE</span>
+			<span class="inline-box">Inline element displayed as an inline block.</span>
+			<span class="default">AFTER</span>
+		</div>
+	</body>
+</html>

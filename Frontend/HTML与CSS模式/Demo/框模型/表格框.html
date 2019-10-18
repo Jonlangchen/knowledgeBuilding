@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表格框</title>
+		<style>
+			.table {
+				border-collapse: separate;
+				table-layout: auto;
+				visibility: visible;
+				width: auto;
+				height: auto;
+				margin: 30px 50px;
+			}
+			.cell {
+				width: auto;
+				height: auto;
+				padding: 20px 50px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Table Box</h1>
+		<div class="container">
+			<table class="default">
+				<tr>
+					<td>BEFORE</td>
+				</tr>
+			</table>
+			<table class="table">
+				<tr>
+					<td class="cell">Table Cell</td>
+					<td class="cell">Table Cell</td>
+				</tr>
+			</table>
+			<table class="default">
+				<tr>
+					<td>AFTER</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

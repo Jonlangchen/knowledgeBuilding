@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>块级框</title>
+		<style>
+			.box {
+				display: block;
+				width: 220px;
+				height: 100px;
+				margin: 10px auto;
+				padding: 10px;
+				overflow: visible;
+				visibility: visible;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Block Box</h1>
+		<div class="container">
+			<div class="default">BEFORE</div>
+			<div class="box">&uarr; <br /> Top <br /> &larr; Left &nbsp; &nbsp; &nbsp;
+				Right &rarr; <br /> Bottom <br /> &darr;</div>
+			<div class="default">AFTER</div>
+		</div>
+	</body>
+</html>

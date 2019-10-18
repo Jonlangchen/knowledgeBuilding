@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>绝对定位设计模式</title>
+		<style>
+			*.positioned {
+				position: relative;
+			}
+			*.absolute {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 绝对定位设计模式将元素从流中移除，然后将它相对于另一个元素进行重新定位。 -->
+		<h1>Absolute</h1>
+		<div class="positioned">
+			<span class="absolute">Sized Absolute</span>
+		</div>
+	</body>
+</html>

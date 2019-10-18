@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>旁注式图片下沉设计模式</title>
+		<style>
+			.indent {
+				position: relative;
+				margin-left: 120px;
+			}
+			.graphic-dropcap {
+				position: absolute;
+				width: 120px;
+				height: 90px;
+				left: -120px;
+				top: 0;
+			}
+			.graphic-dropcap span {
+				position: absolute;
+				width: 120px;
+				height: 90px;
+				margin: 0;
+				left: 0;
+				top: 0;
+				background: url(4.jpg) no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 利用文本替换和左外边距设计模式的有点，在块元素左边创建一个图片下沉效果。 -->
+		<h1>Marginal Graphic Dropcap</h1>
+		<p class="indent"><span class="graphic-dropcap">M<span></span></span>Marginal
+			Graphic Dropcap. The letter M has been covered by the dropcap image.
+			Screen readers read the text and visual users see the image.
+			If the browser cannot display the dropcap image,
+			the text becomes visible.</p>
+	</body>
+</html>
