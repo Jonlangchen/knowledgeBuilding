@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>垂直居中对齐</title>
+		<style>
+			.gp {
+				position: relative;
+				width: 700px;
+				height: 300px;
+				border: 2px solid black;
+			}
+			.ex1 {
+				width: 120px;
+				padding: 5px;
+				text-align: center;
+				border: 1px dotted black;
+			}
+			.ex2 {
+				position: relative;
+				left: 0;
+				border: 5px solid black;
+				background-color: gold;
+			}
+			.ex1 span {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				width: 130px;
+				height: 36px;
+				margin-top: auto;
+				margin-bottom: auto;
+			}
+			#ia {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: 100px;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: 40px;
+				line-height: 100px;
+			}
+			#za {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: 100px;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: 200px;
+			}
+			#wa {
+				position: absolute;
+				top: 90px;
+				bottom: 90px;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: 355px;
+			}
+			#sa {
+				position: absolute;
+				top: 90px;
+				bottom: 90px;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: 510px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Middle Aligned</h1>
+		<div class="gp">
+			<div id="ia" class="ex1 ex2">INLINE</div>
+			<div id="za" class="ex1 ex2"><span>Sized Absolute</span></div>
+			<div id="wa" class="ex1">Can't middle-align a static element or a shrinkwrapped element.</div>
+			<div id="sa" class="ex1 ex2"><span>Stretched Absolute</span></div>
+		</div>
+	</body>
+</html>

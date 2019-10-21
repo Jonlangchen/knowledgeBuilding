@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>上偏移</title>
+		<style>
+			.gp {
+				position: relative;
+				width: 700px;
+				height: 300px;
+				border: 2px solid black;
+			}
+			.parent {
+				margin: 10px;
+				padding: 10px;
+				padding-top: 0;
+				border: 1px solid black;
+			}
+			.example {
+				position: relative;
+				width: 120px;
+				padding: 5px;
+				text-align: center;
+				border: 5px solid black;
+				background-color: gold;
+			}
+			.example span {
+				left: 0;
+				width: 130px;
+				height: auto;
+			}
+			#zs {
+				position: static;
+				height: 100px;
+				margin-top: 25px;
+				margin-bottom: 0;
+			}
+			#ss {
+				position: static;
+				height: auto;
+				margin-top: -70px;
+				margin-bottom: 0;
+			}
+			#za {
+				position: absolute;
+				top: 0;
+				bottom: auto;
+				height: 100px;
+				margin-top: 70px;
+				margin-bottom: auto;
+				margin-left: 200px;
+			}
+			#wa {
+				position: absolute;
+				top: 0;
+				bottom: auto;
+				height: auto;
+				margin-top: 70px;
+				margin-bottom: 0;
+				margin-left: 355px;
+			}
+			#sa {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				height: auto;
+				margin-top: 70px;
+				margin-bottom: 0;
+				margin-left: 510px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Top Offset</h1>
+		<div class="gp">
+			Positioned Grandparent
+			<div class="parent">
+				Non-positioned parent
+				<div id="zs" class="example"><span>Sized Static Block</span></div>
+				<div id="ss" class="example"><span>Stretched Static Block</span></div>
+				<span id="za" class="example"><span>Sized Absolute</span></span>
+				<div id="wa" class="example"><span>Shrinkwrapped Absolute</span></div>
+				<span id="sa" class="example"><span>Stretched Absolute</span></span>
+			</div>
+		</div>
+	</body>
+</html>

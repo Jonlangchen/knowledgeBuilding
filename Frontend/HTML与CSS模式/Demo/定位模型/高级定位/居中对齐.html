@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>居中对齐</title>
+		<style>
+			.gp {
+				position: relative;
+				width: 600px;
+				height: 295px;
+				border: 2px solid balck;
+			}
+			.parent {
+				margin: 10px;
+				padding: 10px;
+				padding-top: 0;
+				border: 1px solid black;
+			}
+			.example {
+				padding: 5px;
+				border: 5px solid black;
+				background-color: gold;
+			}
+			#zs {
+				position: static;
+				width: 400px;
+				margin-top: 5px;
+				margin-right: auto;
+				margin-left: auto;
+				text-align: center;
+			}
+			#ss {
+				position: static;
+				width: auto;
+				margin-top: 5px;
+				margin-right: 70px;
+				margin-left: 70px;
+				text-align: center;
+			}
+			#za {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				width: 67%;
+				margin-top: 155px;
+				margin-right: auto;
+				margin-left: auto;
+				text-align: center;
+			}
+			#wa {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				width: auto;
+				margin-top: 200px;
+				margin-right: 0;
+				margin-left: 0;
+				text-align: center;
+			}
+			#sa {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				width: auto;
+				margin-top: 245px;
+				margin-right: 15%;
+				margin-left: 15%;;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Center Aligned</h1>
+		<div class="gp">
+			Positioned Grandparent
+			<div class="parent">
+				Non-positioned parent
+				<div id="zs" class="example">Sized Static Block</div>
+				<div id="ss" class="example">Stretched Static Block</div>
+				<span id="za" class="example">Sized Absolute</span>
+				<span id="wa">An element can't be shrinkwrapped if it is centered.</span>
+				<span id="sa" class="example">Stretched Absolute</span>
+			</div>
+		</div>
+	</body>
+</html>
