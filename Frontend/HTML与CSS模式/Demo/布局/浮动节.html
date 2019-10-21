@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>浮动节</title>
+		<style>
+			.oi {
+				background-color: gold;
+				border-left: 1px solid gray;
+				border-right: 2px solid black;
+				border-top: 1px solid gray;
+				border-bottom: 2px solid black;
+			}
+			#nav {
+				float: left;
+				width: 25%;
+				min-width: 170px;
+			}
+			#nav .oi {
+				min-height: 150px;
+				margin: 0;
+				padding: 5px;
+			}
+			#main {
+				float: left;
+				width: 75%;
+				min-width: 170px;
+			}
+			#main .oi {
+				min-height: 150px;
+				margin-left: 80px;
+				padding: 5px;
+				padding-left: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Float Section</h1>
+		<div id="nav" class="section">
+			<div class="oi">
+				<h2>Navigation Section</h2>
+				<p>25% of container's width.</p>
+			</div>
+		</div>
+		<div id="main" class="section">
+			<div class="oi">
+				<h2>Main Section</h2>
+				<p>75% of container's width minus 80-pixel left margin, 1-pixel left border,
+					2-pixel left border, and 80-pixel left padding.</p>
+			</div>
+		</div>
+	</body>
+</html>

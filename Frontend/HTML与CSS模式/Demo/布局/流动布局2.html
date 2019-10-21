@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>流动布局2</title>
+		<style>
+			.float-divider {
+				clear: both;
+				display: block;
+				height: 1px;
+				font-size: 1px;
+				line-height: 1px;
+			}
+			.oi1 {
+				background-color: white;
+				margin: 0;
+				padding: 5px;
+			}
+			.oi2 {
+				background-color: gold;
+				margin: 5px;
+				padding: 5px;
+			}
+			.oi3 {
+				background-color: yellow;
+				margin: 5px;
+				padding: 5px;
+			}
+			#main {
+				max-width: 700px;
+			}
+			#nav {
+				float: left;
+				width: 20%;
+				min-width: 75px;
+			}
+			#content {
+				float: left;
+				width: 60%;
+				min-width: 150px;
+			}
+			#news {
+				float: left;
+				width: 20%;
+				min-width: 115px;
+			}
+			#nav .oi2 {
+				min-height: 43px;
+			}
+			#content .oi3 {
+				display: block;
+			}
+			#head {
+				float: left;
+				width: 35%;
+				min-width: 75px;
+			}
+			#detail {
+				float: left;
+				width: 65%;
+				min-width: 75px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Fluid Layout</h1>
+		<div id="main">
+			<div class="oil">
+				<h2>main - 100%</h2>
+				<div id="nav">
+					<div class="oi2"><h3>nav-20%</h3></div>
+				</div>
+				<div id="content">
+					<div class="oi2">
+						<h3>content - 60%</h3>
+						<span id="head"><span class="oi3"><em>head - 35%</em></span></span>
+						<span id="detail"><span class="oi3"><em>detail - 65%</em></span></span>
+						<span class="float-divider"></span>
+					</div>
+				</div>
+				<div id="news">
+					<div class="oi2">
+						<h3>news - 20%</h3>
+					</div>
+				</div>
+				<div class="float-divider"></div>
+			</div>
+		</div>
+	</body>
+</html>
