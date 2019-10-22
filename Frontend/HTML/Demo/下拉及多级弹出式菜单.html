@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下拉及多级弹出式菜单</title>
+		<style>
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				width: 130px;
+				border-bottom: 1px solid #ccc;
+				font-size: 12px;
+			}
+			ul li {
+				position: relative;
+			}
+			li ul {
+				position: absolute;
+				top: 0;
+				left: 129px;
+				display: none;
+			}
+			ul li a {
+				display: block;
+				font-size: 12px;
+				border: 1px solid #ccc;
+				padding: 5px;
+				text-decoration: none;
+				color: #777;
+				background-color: #fff;
+				border-bottom: 0;
+			}
+			/* 解决ul在IE中显示不正确问题 */
+			html ul li {
+				float: left;
+				height: 1%;
+			}
+			html ul li a {
+				height: 1%;
+			}
+			li:hover ul, li.over ul {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="nav">
+			<li>
+				<a href="">文章</a>
+				<ul>
+					<li><a href="">CSS 教程</a></li>
+					<li><a href="">DOM 教程</a></li>
+					<li><a href="">XML 教程</a></li>
+					<li><a href="">Flash 教程</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">参考</a>
+				<ul>
+					<li><a href="">XHTML</a></li>
+					<li><a href="">XML</a></li>
+					<li><a href="">CSS</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">Blog</a>
+				<ul>
+					<li><a href="">全部</a></li>
+					<li><a href="">网页技术</a></li>
+					<li><a href="">UI 技术</a></li>
+					<li><a href="">Flash 技术</a></li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li><a href="">CSS 教程</a></li>
+			<li><a href="">DOM 教程</a></li>
+			<li><a href="">XML 教程</a></li>
+			<li><a href="">Flash 教程</a></li>
+		</ul>
+		
+		<script>
+			var startList = function() {
+				if (document.all && document.getElementById) {
+					var navRoot = document.getElementById("nav");
+					for (var i = 0; i < navRoot.childNodes.length; i++) {
+						var node = navRoot.childNodes[i];
+						if (node.nodeName == "LI") {
+							node.onmouseover = function() {
+								this.className += " over";
+							}
+							node.onmouseout = function() {
+								this.className = this.className.replace(" over", "");
+							}
+						}
+					}
+				}
+			}
+			window.onload = startList;
+		</script>
+	</body>
+</html>
