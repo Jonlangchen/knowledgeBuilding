@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>初级进度条</title>
+		<style>
+			#loadbar {
+				width: 280px;
+				background-color: #000;
+				border: 1px solid #000;
+			}
+			#bar {
+				display: block;
+				font-family: arial;
+				font-size: 12px;
+				background-color: #00d0ff;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body onLoad="startbar();">
+		<div id="loadbar">
+			<strong id="bar" style="width:30%;">30%</strong>
+		</div>
+		
+		<script>
+			var i = 0;
+			function startbar() {
+				showbar = setInterval("setbar()", 500);
+			}
+			function setbar() {
+				i += 5;
+				if (i >= 100) {
+					clearInterval(showbar);
+				}
+				document.getElementById("bar").style.width = i + "%";
+				document.getElementById("bar").innerHTML = i + "%";
+			}
+		</script>
+	</body>
+</html>

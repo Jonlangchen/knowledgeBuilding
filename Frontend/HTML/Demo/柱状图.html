@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>柱状图</title>
+		<style>
+			#vert {
+				width: 300px;
+				height: 200px;
+				border: 1px solid #d6d7d6;
+				background-color: #fff;
+				position: relative;
+				/* 添加背景 */
+			}
+			#vert h1 {
+				font-size: 14px;
+				margin: 10px;
+			}
+			#vert ul li {
+				float: left;
+				position: absolute;
+				bottom: 0;
+				background-color: #333;
+				text-align: center;
+				font-weight: bold;
+				color: #fff;
+				line-height: 40px;
+				width: 30px;
+			}
+			/* 背景换图片 */
+			#vert ul li.c1 {left: 30px;background-color:#00d0ff;}
+			#vert ul li.c2 {left: 100px;background-color:#e0ff00;}
+			#vert ul li.c3 {left: 170px;background-color:#ffaa00;}
+			#vert ul li.c4 {left: 240px;background-color:#ff7f00;}
+		</style>
+	</head>
+	<body>
+		<div id="vert">
+			<ul>
+				<li class="c1" style="heihgt:150px;">20</li>
+				<li class="c2" style="heihgt:100px;">22</li>
+				<li class="c3" style="heihgt:40px;">6</li>
+				<li class="c4" style="heihgt:80px;">10</li>
+			</ul>
+		</div>
+	</body>
+</html>

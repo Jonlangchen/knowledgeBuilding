@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>小提示窗口</title>
+		<style>
+			a.tip {
+				color: red;
+				text-decoration: none;
+				position: relative;
+			}
+			a.tip span {
+				display: none;
+			}
+			a.tip:hover {
+				cursor: hand;
+			}
+			a.tip:hover .popbox {
+				display: block;
+				position: absolute;
+				top: 15px;
+				left: -30px;
+				width: 100px;
+				background-color: #424242;
+				color: #fff;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<p>
+			目前推荐遵循的是 W3C 于 1998 年 5 月 12 日推荐 
+			<a href="#" class="tip">CSS<span class="popbox">Cascading Style Sheets 层叠样式表</span></a>。
+			W3C 创建 <a href="#" class="tip">CSS<span class="popbox">Cascading Style Sheets 层叠样式表</span></a> 
+			标准的目的是以 <a href="#" class="tip">CSS<span class="popbox">Cascading Style Sheets 层叠样式表</span></a> 
+			取代 HTML 表格式布局、帧和其他表现的语言。
+		</p>
+	</body>
+</html>
