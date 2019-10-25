@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数继承特性</title>
+	</head>
+	<body>
+		<script>
+			// 无需使用 prototype 或 new,而是利用 JavaScript "函数继承"特性来吸收和增强对象实例
+			var pet = function (name, legs) {
+				var that = {
+					name: name,
+					getDetails: function() {
+						return that.name + " has " + legs + " legs";
+					}
+				};
+				return that;
+			};
+			var cat = function(name) {
+				var that = pet(name, 4);
+				that.action = function() {
+					return "Catch a bird";
+				};
+				return that;
+			};
+			var petCat = cat("Felix");
+			console.log(petCat.getDetails()); // Felix has 4 legs
+			console.log(petCat.action()); // Catch a bird
+			petCat.name = "Sylvester";
+			petCat.legs = 7;
+			console.log(petCat.getDetails()); // Sylvester has 4 legs
+		</script>
+	</body>
+</html>
