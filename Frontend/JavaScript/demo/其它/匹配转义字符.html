@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>匹配转义字符</title>
+	</head>
+	<body>
+		<script>
+			function htmlEscape(text) {
+				return text.replace(/[<>"&]/g, function(match, pos, originalText) {
+					switch(match) {
+						case "<":
+							return "&lt;";
+						case ">":
+							return "&gt;";
+						case "&":
+							return "&amp;";
+						case "\"":
+							return "&quot;";
+					}
+				});
+			}
+			var result = htmlEscape("<p> class=\"greeting\">Hello world!</p>");
+			console.log(result);
+		</script>
+	</body>
+</html>
