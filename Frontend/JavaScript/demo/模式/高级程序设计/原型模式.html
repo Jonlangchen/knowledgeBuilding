@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型模式</title>
+	</head>
+	<body>
+		<script>
+			function Person() {}
+			
+			Person.prototype.name = "Nicholas";
+			Person.prototype.age = 29;
+			Person.prototype.job = "Software Engineer";
+			Person.prototype.sayName = function() {
+				return this.name;
+			};
+			
+			var person1 = new Person();
+			person1.sayName(); // Nicholas
+			
+			var person2 = new Person();
+			person2.sayName(); // Nicholas
+			
+			console.log(person1.sayName == person2.sayName); // true
+			
+			console.log(Person.prototype.constructor === Person);
+			
+			// 通过 isPrototypeOf() 方法来确定对象之间是否存在关系:
+			// 实例内部都有一个指向原型的prototype的指针.
+			console.log(Person.prototype.isPrototypeOf(person1)); // true
+			console.log(Person.prototype.isPrototypeOf(person2)); // true
+			
+			// Object.getPrototypeOf() 方法返回 [[Prototype]]
+			console.log(Object.getPrototypeOf(person1) == Person.prototype);
+			
+			// hasPrototypeProperty()方法判断属性是否来自原型
+			function hasPrototypeProperty(object, name) {
+				return !object.hasOwnProperty(name) && (name in object);
+			}
+			
+			//Object.keys()方法接收一个对象作为参数,返回一个包含所有可枚举属性的字符串数组.
+			var keys = Object.keys(Person.prototype);
+			console.log(keys); 
+			
+			var p1 = new Person();
+			p1.name = "Rob";
+			p1.age = 31;
+			var p1keys = Object.keys(p1);
+			console.log(p1keys);
+			
+			//Object.getOwnPropertyNames() 获取所有实例属性,无论是否可枚举
+			var keys1 = Object.getOwnPropertyNames(Person.prototype);
+			console.log(keys1);
+		</script>
+	</body>
+</html>
