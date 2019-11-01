@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>特权方法</title>
+	</head>
+	<body>
+		<script>
+			// 有权访问私有变量和私有函数的公有方法称为特权方法（privileged method）。
+			// 有两种在对象上创建特权方法的方式。
+			// 第一种是在构造函数中定义特权方法，基本模式如下。
+			function MyObject() {
+				// 私有变量和私有函数
+				var privateVariable = 10;
+				
+				function privateFunction() {
+					return false;
+				}
+				
+				// 特权方法
+				this.publicMethod = function () {
+					privateVariable++;
+					return privateFunction();
+				};
+			}
+			
+			// 利用私有和特权成员，可以隐藏那些不应该被直接修改的数据，例如：
+			function Person(name) {
+				this.getName = function() {
+					return name;
+				};
+				this.setName = function(value) {
+					name = value;
+				};
+			}
+			var person = new Person("Nicholas");
+			console.log(person.getName());
+			person.setName("Greg");
+			console.log(person.getName());
+			// 在构造函数中定义特权方法也有一个缺点，那就是你必须使用构造函数模式来达到这个
+			// 目的。构造函数模式的缺点是针对每个实例都会创建同样一组新方法,
+			// 使用静态私有变量来实现特权方法就可以避免这个问题.
+			
+			// 通过在私有作用域中定义私有变量或函数，同样也可以创建特权方法，其基本模式如下
+			// 所示。
+			(function() {
+				// 私有变量和私有函数
+				var privateVariable = 10;
+				
+				function privateFunction() {
+					return false;
+				}
+				
+				// 构造函数
+				MyObject = function(){};
+				
+				// 公有/特权方法
+				MyObject.prototype.publicMethod = function() {
+					privateVariable++;
+					return privateFunction();
+				}
+			})();
+			
+			// 这个模式与在构造函数中定义特权方法的主要区别，就在于私有变量和函数是由实例
+			// 共享的。由于特权方法是在原型上定义的，因此所有实例都使用同一个函数。
+			
+			(function() {
+				var name = "";
+				Person = function(value) {
+					name = value;
+				};
+				Person.prototype.getName = function() {
+					return name;
+				};
+				Person.prototype.setName = function(value) {
+					name = value;
+				};
+			})();
+			
+			var p1 = new Person("Nicholas");
+			console.log(p1.getName());
+			p1.setName("Greg");
+			console.log(p1.getName());
+			
+			var p2 = new Person("Michael");
+			console.log(p1.getName());
+			console.log(p2.getName());
+			
+			// 以这种方式创建静态私有变量会因为使用原型而增进代码复用，但每个实例都没有自
+			// 己的私有变量。到底是使用实例变量，还是静态私有变量，最终还是要视你的具体需
+			// 求而定。
+			
+			// 多查找作用域链中的一个层次，就会在一定程度上影响查找速度。而这正是使用
+			// 闭包和私有变量的一个显明的不足之处。
+		</script>
+	</body>
+</html>
