@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>寄生式继承</title>
+	</head>
+	<body>
+		<script>
+			// 问题:
+			// 使用寄生式继承来为对象添加函数，会由于不能做到函数复用而降低效率；这一
+			// 点与构造函数模式类似。
+			
+			// 寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，
+			// 该函数在内部以某种方式来增强对象，最后再像真地是它做了所有工作一样返回对象。
+			function createAnother(original) {
+				// 通过调用函数创建一个新对象
+				var clone = object(original);
+				// 以某种方式来增强这个对象
+				clone.sayHi = function() {
+					console.log("hi");
+				};
+				// 返回这个对象
+				return clone;
+			}
+			
+			function object(o) {
+				function F() {};
+				F.prototype = o;
+				return new F();
+			}
+			
+			var person = {
+				name: "Nicholas",
+				friends: ["Shelby", "Court", "Van"]
+			};
+			
+			var p1 = createAnother(person);
+			p1.sayHi();
+		</script>
+	</body>
+</html>

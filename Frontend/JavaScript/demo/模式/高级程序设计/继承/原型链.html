@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>原型链</title>
+	</head>
+	<body>
+		<script>
+			// ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。
+			//基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
+			
+			// 原型链的问题:
+			// 1.包含引用类型值的原型属性会被所有实例共享;
+			// 2.在创建子类型的实例时，不能向超类型的构造函数中传递参数。
+			
+			// ****实践中很少会单独使用原型链。
+			
+			// 实现原型链有一种基本模式
+			function SuperType() {
+				this.property = true;
+			}
+			SuperType.prototype.getSuperValue = function() {
+				return this.property;
+			};
+			
+			function SubType() {
+				this.subproperty = false;
+			}
+			// 继承了 SuperType, 其本质是重写原型对象,代之以一个新类型的实例.
+			SubType.prototype = new SuperType();
+			SubType.prototype.getSubValue = function() {
+				return this.subproperty;
+			};
+			
+			var instance = new SubType();
+			console.log(instance.getSuperValue());
+			
+			// 确定原型和实例的关系: 
+			// 1.instanceof操作符
+			// 2.使用 isPrototypeOf() 方法
+			cosnole.log(SubType.prototype.isPrototypeOf(instance));
+			
+			//  谨慎地定义方法
+			// 1.给原型添加方法的代码一定要放在替换原型的语句之后。
+			// 2.还有一点需要提醒读者，即在通过原型链实现继承时，不能使用对象字面量
+			// 创建原型方法。因为这样做就会重写原型链.
+			// 即使用字面量添加新方法，会导致上一行代码无效 SubType.prototype = new SuperType(); 
+		</script>
+	</body>
+</html>
