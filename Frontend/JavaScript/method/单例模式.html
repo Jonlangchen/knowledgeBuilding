@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>单例模式</title>
+	</head>
+	<body>
+		<script>
+			// 所谓单例（singleton），指的就是只有一个实例的对象。
+			// 按照惯例，JavaScript 是以对象字面量的方式来创建单例对象的。
+			// var singleton = {
+			// 	name: value,
+			// 	method: function() {
+			// 		//这里是方法的代码
+			// 	}
+			// }
+			
+			// 模块模式通过为单例添加私有变量和特权方法能够使其得到增强，其语法形式如下：
+			var singleton = function() {
+				// 私有变量
+				var privateVariable = 10;
+				// 私有函数
+				function privateFunction() {
+					return false;
+				}
+				// 特权/公有方法和属性
+				return {
+					publickProperty: true,
+					publicMethod: function() {
+						privateVariable++;
+						privateFunction();
+					}
+				};
+			}();
+			
+			//这个模块模式使用了一个返回对象的匿名函数。在这个匿名函数内部，首先定义了私有变量
+			//和函数。然后，将一个对象字面量作为函数的值返回。返回的对象字面量中只包含可以公开
+			//的属性和方法。由于这个对象是在匿名函数内部定义的，因此它的公有方法有权访问私有变
+			//量和函数。从本质上来讲，这个对象字面量定义的是单例的公共接口。这种模式在需要对单
+			//例进行某些初始化，同时又需要维护其私有变量时是非常有用的，例如
+			var application = function() {
+				//私有变量和函数
+				var components = new Array();
+				// 初始化
+				components.push(new BaseComponent());
+				// 公共
+				return {
+					getComponentCount: function() {
+						return components.length;
+					},
+					registerComponent: function(component) {
+						if (typeof component == "object") {
+							components.push(component);
+						}
+					}
+				};
+			}();
+			
+			// 增强的模块模式
+			// 有人进一步改进了模块模式，即在返回对象之前加入对其增强的代码。这种增强的模块模
+			// 式适合那些单例必须是某种类型的实例，同时还必须添加某些属性和（或）方法对其加以
+			// 增强的情况。
+			var singleton = function() {
+				// 私有变量
+				var privateVariable = 10;
+				// 私有函数
+				function privateFunction() {
+					return false;
+				}
+				// 创建对象
+				var object= new CustomType();
+				// 添加特权/公有方法和属性
+				object.publicProperty= true;
+				object.publicMethod = function() {
+					privateVariable++;
+					privateFunction();
+				};
+				// 返回这个对象
+				return object;
+			}();
+			
+			// 演示模块模式的例子中的 application 对象必须是 BaseComponent 的实例
+			var application = function() {
+				//私有变量和函数
+				var components = new Array();
+				// 初始化
+				components.push(new BaseComponent());
+				
+				// 创建 application 的一个局部副本
+				var app = new BaseComponent();
+				// 公共接口
+				app.getComponentCount = function() {
+					return components.length;
+				};
+				app.registerComponent = function(component) {
+					if (typeof component == "object") {
+						components.push(component);
+					}
+				}
+				return app;
+			}();
+		</script>
+	</body>
+</html>
