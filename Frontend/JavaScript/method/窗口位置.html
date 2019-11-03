@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>窗口位置</title>
+	</head>
+	<body>
+		<script>
+			var leftPos = (typeof window.screenLeft == "number") ?
+											window.screenLeft : window.screenX;
+			
+			var topPos = (typeof window.screenTop == "number") ?
+											window.screenTop : window.screenY;
+		</script>
+	</body>
+</html>
