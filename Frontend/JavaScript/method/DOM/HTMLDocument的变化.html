@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTMLDocument的变化</title>
+	</head>
+	<body>
+		<script>
+			// 使用 document.readyState 的最恰当方式，就是通过它来实现一个指示文档已经加
+			// 载完成的指示器。
+			// document.readyState 属性的基本用法如下。
+			if (document.readyState == "complete") {
+				// 执行操作
+			}
+			
+			// compatMode 的属性是浏览器采用了哪种渲染模式。
+			// 在标准模式下，document.compatMode 的值等于"CSS1Compat"，
+			// 而在混杂模式下，document.compatMode 的值等于"BackCompat"。
+			if (document.compatMode == "CSS1Compat") {
+				console.log("Standards mode");
+			} else {
+				console.log("Quirke mode");
+			}
+			
+			// head 属性
+			var head = document.head || document.getElementsByTagName("head")[0];
+		</script>
+	</body>
+</html>

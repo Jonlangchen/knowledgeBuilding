@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>操作样式表</title>
+	</head>
+	<body>
+		<script>
+			// 要想在不同浏览器中都能取得样式表对象
+			function getStyleSheet(element) {
+				return element.sheet || element.styleSheet;
+			}
+			//取得第一个<link/>元素引入的样式表
+			var link = document.getElementsByTagName("link")[0];
+			var sheet = getStylesheet(link);
+			
+			// 要以跨浏览器的方式向样式表中插入规则，可以使用下面的函数。这个函数接受 4 个
+			// 参数：要向其中添加规则的样式表以及与 addRule()相同的 3 个参数，如下所示。
+			function insertRule(sheet, selectorText, cssText, position) {
+				if (sheet.insertRule) {
+					sheet.insertRule(selectorText + "{" + cssText + "}", position);
+				} else if (sheet.addRule) {
+					sheet.addRule(selectorText, cssText, position);
+				}
+			}
+			insertRule(document.styleSheets[0], "body", "background-color: silver", 0); 
+			
+			//  删除规则
+			// 下面是一个能够跨浏览器删除规则的函数。第一个参数是要操作的样式表，第二个参数
+			// 是要删除的规则的索引。
+			function deleteRule(sheet, index) {
+				if (sheet.deleteRule) {
+					sheet.deleteRule(index); // DOM 方法
+				} else if (sheet.removeRule) {
+					sheet.removeRule(index); // 仅对 IE 有效
+				}
+			}
+			deleteRule(document.styleSheets[0], 0); 
+		</script>
+	</body>
+</html>

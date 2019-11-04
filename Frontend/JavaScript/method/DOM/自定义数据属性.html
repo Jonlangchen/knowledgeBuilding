@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>自定义数据属性</title>
+	</head>
+	<body>
+		<div id="myDiv" data-appId="12345" data-myname="Nicholas"></div>
+		<script>
+			var div = document.getElementById("myDiv");
+			//取得自定义属性的值
+			var appId = div.dataset.appId;
+			var myName = div.dataset.myname;
+			//设置值
+			div.dataset.appId = 23456;
+			div.dataset.myname = "Michael";
+			//有没有"myname"值呢？
+			if (div.dataset.myName) {
+				console.log("hello, " + div.dataset.myname);
+			}
+		</script>
+	</body>
+</html>

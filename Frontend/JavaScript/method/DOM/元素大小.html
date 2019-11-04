@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>元素大小</title>
+	</head>
+	<body>
+		<script>
+			// 要确定浏览器视口大小
+			function getViewport() {
+				// 这个函数首先检查 document.compatMode 属性，以确定浏览器是否运行在混杂模式。
+				if (document.compatMOde == "BackCompat") {
+					return {
+						width: document.body.clientWidth,
+						height: document.body.clientHeight
+					};
+				} else {
+					return {
+						width: document.documentElement.clientWidth,
+						height: document.documentElement.clientHeight
+					};
+				}
+			}
+			
+			
+			// 滚动大小
+			// 在确定文档的总高度时（包括基于视口的最小高度时），必须取得 scrollWidth/
+			// clientWidth 和scrollHeight/clientHeight 中的最大值，才能保证在跨浏览器的
+			// 环境下得到精确的结果。
+			function getViewDoc() {
+				if (document.compatMOde == "BackCompat") {
+					return {
+						docWidth: Math.max(document.body.scrollWidth,
+															document.body.clientWidth),
+						docHeight: Math.max(document.body.scrollHeight,
+															document.body.clientHeight)
+					}
+				} else {
+					return {
+						docWidth: Math.max(document.documentElement.scrollWidth,
+															document.documentElement.clientWidth),
+						docHeight: Math.max(document.documentElement.scrollHeight,
+															document.documentElement.clientHeight)
+					}
+				}
+			}
+			
+			// 下面这个函数会检测元素是否位于顶部，如果不是就将其回滚到顶部。
+			function scrollToTop(element) {
+				if (element.scrollTop != 0) {
+					element.scrollTop = 0;
+				}
+			}
+			
+			// 取得元素的左和上偏移量
+			function getElementLeft(element){
+			  var actualLeft = element.offsetLeft;
+			  var current = element.offsetParent;
+			  while (current !== null){
+					actualLeft += current.offsetLeft;
+					current = current.offsetParent;
+				}
+				return actualLeft;
+			} 
+			
+			function getElementTop(element){
+				var actualTop = element.offsetTop;
+				var current = element.offsetParent;
+				while (current !== null){
+					actualTop += current. offsetTop;
+					current = current.offsetParent;
+				}
+				return actualTop;
+			} 
+			
+			// 确定元素大小(跨浏览器的)
+			function getBoundingClientRect(element) {
+				var scrollTop = document.documentElement.scrollTop;
+				var scrollLeft = document.documentElement.scrollLeft;
+				
+				if (element.getBoundingClientRect) {
+					if (typeof arguments.callee.offset != "number") {
+						var temp = document.createElement("div");
+						temp.style.cssText = "position:absolute;left:0;top:0;";
+						document.body.appendChild(temp);
+						arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
+						document.body.removeChild(temp);
+						temp = null;
+					}
+					var rect = element.getBoundingClientRect();
+					var offset = arguments.callee.offset;
+					
+					return {
+						left: rect.left + offset,
+						right: rect.right + offset,
+						top: rect.top + offset,
+						bottom: rect.boom + offset
+					};
+				} else {
+					var actualLeft = getElementLeft(element);
+					var actualTop = getElementTop(element);
+					return {
+						left: actualLeft - scrollLeft,
+						right: actualLeft + element.offsetWidth - scrollLeft,
+						top: actualTop - scrollTop,
+						bottom: actualTop + element.offsetHeight - scrollTop
+					};
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>改变浏览器的位置</title>
+	</head>
+	<body>
+		<script>
+			// 首先，也是最常用的方式，就是使用assign()方法并为其传递一个 URL，
+			// 就可以立即打开新 URL 并在浏览器的历史记录中生成一条记录。
+			location.assign("http://www.wrox.com");
+			
+			// 如果是将 location.href或 window.location 设置为一个 URL 值，也会以该值调
+			// 用 assign()方法。
+			window.location = "http://www.wrox.com";
+			location.href = "http://www.wrox.com";
+			
+			// 修改location对象的其他属性也可以改变当前加载的页面。
+			
+			//假设初始 URL 为 http://www.wrox.com/WileyCDA/
+			//将 URL 修改为"http://www.wrox.com/WileyCDA/#section1"
+			location.hash = "#section1";
+			//将 URL 修改为"http://www.wrox.com/WileyCDA/?q=javascript"
+			location.search = "?q=javascript";
+			//将 URL 修改为"http://www.yahoo.com/WileyCDA/"
+			location.hostname = "www.yahoo.com";
+			//将 URL 修改为"http://www.yahoo.com/mydir/"
+			location.pathname = "mydir";
+			//将 URL 修改为"http://www.yahoo.com:8080/WileyCDA/"
+			location.port = 8080; 
+			
+			// 当通过上述任何一种方式修改 URL 之后，浏览器的历史记录中就会生成一条新记录.
+			// 要禁用通过单击“后退”按钮都会导航到前一个页面,可以使用 replace()方法。
+			location.replace("http://www.wrox.com/");
+			
+			// 与位置有关的最后一个方法是 reload()，作用是重新加载当前显示的页面。如
+			location.reload(); //重新加载（有可能从缓存中加载）
+			location.reload(true); //重新加载（从服务器重新加载）
+		</script>
+	</body>
+</html>

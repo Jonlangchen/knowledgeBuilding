@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>插入文本</title>
+	</head>
+	<body>
+		<script>
+			// 为了确保跨浏览器兼容，编写一个函数来检测可以使用哪个属性。
+			function getInnerText(element) {
+				return (typeof element.textContent == "string") ?
+					element.textContent : element.innerText;
+			}
+			
+			function setInnerText(element, text) {
+				if (typeof element.textContent == "string") {
+					element.textContent = text;
+				} else {
+					element.innerText = text;
+				}
+			}
+		</script>
+	</body>
+</html>

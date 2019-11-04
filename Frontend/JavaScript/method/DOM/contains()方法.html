@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>contains()方法</title>
+	</head>
+	<body>
+		<script>
+			// 使用一些浏览器及能力检测，就可以写出如下所示的一个通用的 contains 函数：
+			function contains(refNode, otherNode){
+				if (typeof refNode.contains == "function" &&
+					(!client.engine.webkit || client.engine.webkit >= 522)){
+					return refNode.contains(otherNode);
+				} else if (typeof refNode.compareDocumentPosition == "function"){
+					return !!(refNode.compareDocumentPosition(otherNode) & 16);
+				} else {
+					var node = otherNode.parentNode;
+					do {
+						if (node === refNode){
+							return true;
+						} else {
+							node = node.parentNode;
+						}
+					} while (node !== null); 
+					return false;
+			  }
+			 } 
+		</script>
+	</body>
+</html>

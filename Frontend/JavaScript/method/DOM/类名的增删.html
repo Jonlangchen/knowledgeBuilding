@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>类名的增删</title>
+	</head>
+	<body>
+		<div class="bd user disabled">...</div> 
+		<script>
+			// 删除"user"类
+			
+			// 首先,取得类名字符串并拆分成数组
+			var classNames = div.className.split(/\s+/);
+			
+			// 找到要删除的类名
+			var pos = -1,
+				i,
+				len;
+			for (i = 0, len = classNames.length; i < len; i++) {
+				if (classNames[i] == "user") {
+					pos = i;
+					break;
+				}
+			}
+			
+			// 删除类名
+			className.splice(i, 1);
+			
+			// 把剩下的类名拼成字符串并重新设置
+			div.className = classNames.join(" ");
+			
+			
+			// HTML5 新增了一种操作类名的方式，可以让操作更简单也更安全，那就是为所有元素添加
+			// classList 属性。
+			//删除"disabled"类
+			div.classList.remove("disabled");
+			//添加"current"类
+			div.classList.add("current");
+			//切换"user"类
+			div.classList.toggle("user");
+			//确定元素中是否包含既定的类名
+			if (div.classList.contains("bd") && !div.classList.contains("disabled")){
+			 //执行操作
+			)
+			//迭代类名
+			for (var i=0, len=div.classList.length; i < len; i++){
+			 doSomething(div.classList[i]);
+			}
+		</script>
+	</body>
+</html>

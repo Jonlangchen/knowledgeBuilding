@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Document类型</title>
+	</head>
+	<body>
+		<script>
+			// 所有浏览器都支持 document.documentElement 和 document.body 属性。
+			var html = document.documentElement; //取得对<html>的引用
+			var body = document.body; //取得对<body>的引用
+			var doctype = document.doctype; //取得对<!DOCTYPE>的引用
+			
+			// 文档信息
+			
+			//取得文档标题
+			var originalTitle = document.title;
+			//设置文档标题
+			document.title = "New page title";
+			
+			//取得完整的 URL
+			var url = document.URL;
+			//取得域名
+			var domain = document.domain;
+			//取得来源页面的 URL
+			var referrer = document.referrer; 
+			
+			// 特殊集合
+			// 为访问文档常用的部分提供了快捷方式，包括：
+			// document.anchors，包含文档中所有带 name 特性的<a>元素；
+			
+			// document.forms，包含文档中所有的<form>元素，与 
+			// document.getElementsByTagName("form")得到的结果相同；
+			
+			// document.images，包含文档中所有的<img>元素，与 
+			// document.getElementsByTagName("img")得到的结果相同；
+			
+			// document.links，包含文档中所有带 href 特性的<a>元素。
+			
+			// DOM 一致性检测
+			// 如果浏览器支持给定名称和版本的功能，则该方法返回 true
+			// 最好除了检测hasFeature()之外，还同时使用能力检测。
+			var hasXmlDom = document.implementation.hasFeature("XML", "1.0"); 
+		</script>
+	</body>
+</html>
