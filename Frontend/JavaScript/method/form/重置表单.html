@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>重置表单</title>
+	</head>
+	<body>
+		<!-- 重置按钮类型 -->
+		<!-- 通用重置按钮 -->
+		<input type="reset" value="Reset Form">
+		
+		<!-- 自定义重置按钮 -->
+		<button type="reset">Reset Form</button>
+		
+		<script src="../../eventUtil.js"></script>
+		<script>
+			// 了阻止重置表单的代码
+			var form = document.getElementById("myForm");
+			EventUtil.addHandler(form, "reset", function(event) {
+				// 取得事件对象
+				event = EventUtil.getEvent(event);
+				
+				// 阻止表单重置
+				EventUtil.preventDefault(event);
+			});
+			
+			// 通过 JavaScript 来重置表单(会样触发 reset 事件)
+			form.reset();
+		</script>
+	</body>
+</html>

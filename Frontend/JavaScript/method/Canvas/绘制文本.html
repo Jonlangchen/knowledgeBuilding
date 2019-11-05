@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>绘制文本</title>
+	</head>
+	<body>
+		<canvas id="drawing" width="200px" height="200px">A drawing of something.</canvas>
+		<script>
+			// 即绘制一个不带数字的时钟表盘
+			var drawing = document.getElementById("drawing");
+			// 确定浏览器支持<canvas>元素
+			if (drawing.getContext) {
+				var context = drawing.getContext("2d");
+				
+				// 开始路径
+				context.beginPath();
+				
+				// 绘制外圈
+				context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+				
+				// 绘制内圈
+				context.moveTo(194, 100);
+				context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+				
+				// 绘制分针
+				context.moveTo(100, 100);
+				context.lineTo(100, 15);
+				
+				// 绘制时针
+				context.moveTo(100, 100);
+				context.lineTo(35, 100);
+				
+				// 用于在路径被关闭之前确定画布上的某一点是否位于路径上
+				if (context.isPointInPath(100, 100)){
+				 console.log("Point (100, 100) is in the path.");
+				} 
+				
+				// 描边路径
+				context.stroke();
+				
+				// 绘制文本
+				context.font = "bold 14px Arial";
+				context.textAlign = "center";
+				context.textBaseline = "middle";
+				context.fillText("12", 100, 20);
+				
+				// 起点对齐
+				context.textAlign = "start";
+				context.fillText("12", 100, 40);
+				
+				// 终点对齐
+				context.textAlign = "end";
+				context.fillText("12", 100, 60);
+				
+				// measureText()方法利用 font、textAlign 和 textBaseline 的当前值计算指
+				// 定文本的大小。
+				var fontSize = 100;
+				context.font = fontSize + "px Arial";
+				
+				while(context.measureText("Hello world!").width > 140) {
+					fontSize--;
+					context.font = fontSize + "px Arial";
+				}
+				
+				context.fillText("Hello world!", 150, 10);
+				context.fillText("Font size is " + fontSize + "px", 150, 50);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>变换</title>
+	</head>
+	<body>
+		<canvas id="drawing" width="200px" height="200px">A drawing of something.</canvas>
+		<script>
+			// 即绘制一个不带数字的时钟表盘
+			var drawing = document.getElementById("drawing");
+			// 确定浏览器支持<canvas>元素
+			if (drawing.getContext) {
+				var context = drawing.getContext("2d");
+				
+				// 开始路径
+				context.beginPath();
+				
+				// 绘制外圈
+				context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+				
+				// 绘制内圈
+				context.moveTo(194, 100);
+				context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+				/*
+				// 绘制分针
+				context.moveTo(100, 100);
+				context.lineTo(100, 15);
+				
+				// 绘制时针
+				context.moveTo(100, 100);
+				context.lineTo(35, 100);
+				*/
+			 
+			 // 变换原点
+			 context.translate(100, 100);
+			 
+			 // 旋转表针
+			 context.rotate(1);
+			 
+			 // 绘制分针
+			 context.moveTo(0, 0);
+			 context.lineTo(0, -85);
+			 
+			 // 绘制时针
+			 context.moveTo(0, 0);
+			 context.lineTo(-65, 0);
+			 
+				// 用于在路径被关闭之前确定画布上的某一点是否位于路径上
+				if (context.isPointInPath(100, 100)){
+				 console.log("Point (100, 100) is in the path.");
+				} 
+				
+				// 描边路径
+				context.stroke();
+				
+				
+				context.fillStyle = "#ff0000";
+				context.save();
+				
+				context.fillStyle = "#00ff00";
+				context.translate(100, 100);
+				context.save();
+				
+				context.fillStyle = "#0000ff";
+				// 从点(100,100)开始绘制蓝色矩形
+				context.fillRect(0, 0, 100, 200);
+				
+				context.restore();
+				// 从点(110,110)开始绘制绿色矩形
+				context.fillRect(10, 10, 100, 200);
+				
+				context.restore();
+				// /从点(0,0)开始绘制红色矩形
+				context.fillRect(0, 0, 100, 200);
+			}
+		</script>
+	</body>
+</html>

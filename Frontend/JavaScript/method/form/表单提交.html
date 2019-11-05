@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>阻止表单提交</title>
+	</head>
+	<body>
+		<!-- 提交按钮类型 -->
+		<!-- 通用提交按钮 -->
+		<input type="submit" value="Submit Form">
+		
+		<!-- 自定义提交按钮 -->
+		<button type="submit">Submit Form</button>
+		
+		<!-- 图像按钮 -->
+		<input type="image" src="graphic.gif">
+		
+		<script src="../../eventUtil.js"></script>
+		<script>
+			// 下列代码会阻止表单提交
+			var form = document.getElementById("myForm");
+			EventUtil.addHandler(form, "submit", function(event) {
+				// 取得事件对象
+				event = EventUtil.getEvent(event);
+				
+				// 阻止默认事件
+				// 一般来说，在表单数据无效而不能发送给服务器时，可以使用这一技术。
+				EventUtil.preventDefault(event);
+			});
+			// 以编程方式调用 submit()方法也可以提交表单(不会触发 submit 事件)
+			form.submit();
+			
+			// 提交表单时可能出现的最大问题，就是重复提交表单。
+			// 解决这一问题的办法有两个：
+			// 在第一次提交表单后就禁用提交按钮，
+			// 或者利用 onsubmit 事件处理程序取消后续的表单提交操作。
+			
+			// 避免多次提交表单
+			EventUtil.addHandler(form, "submit", function(event) {
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+				// 取得提交按钮
+				var btn = target.elements["submit-btn"];
+				// 禁用它
+				btn.disabled = true;
+			})
+		</script>
+	</body>
+</html>

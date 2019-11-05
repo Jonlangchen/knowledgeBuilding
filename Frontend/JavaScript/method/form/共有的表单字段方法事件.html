@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>共有的表单字段方法事件</title>
+	</head>
+	<body>
+		<script src="../../eventUtil.js"></script>
+		<script>
+			// 在页面加载完毕后，将焦点转移到表单中的第一个字段。
+			// 可以侦听页面的 load 事件，并在该事件发生时在表单的第一个字段上调用 focus()
+			// 方法
+			EventUtil.addHandler(window, "load", function(event) {
+				var element = document.forms[0].elements[0];
+				if (element.autofocus !== true) {
+					element.focus(); 
+					console.log("JS focus");
+				}
+			});
+			// 从元素中移走焦点
+			document.forms[0].elements[0].blur(); 
+			
+			
+			var textbox = document.forms[0].elements[0];
+			// 可以利用focus 事件修改文本框的背景颜色，以便更清楚地表明这个字段获得了焦点。
+			EventUtil.addHandler(textbox, "focus", function(event) {
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+				
+				if (target.style.backgroundColor != "red") {
+					target.style.backgroundColor = "yellow";
+				}
+			});
+			// 可以利用 blur 事件恢复文本框的背景颜色，
+			EventUtil.addHandler(textbox, "blur", function(event) {
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+				
+				if(/[^\d]/.test(target.value)) {
+					target.style.backgroundColor = "red";
+				} else {
+					target.style.backgroundColor = "";
+				}
+			});
+			
+			// 利用 change 事件在用户输入了非数值字符时再次修改背景颜色。
+			EventUtil.addHandler(textbox, "change", function(event) {
+				event = EventUtil.getEvent(event);
+				var target = EventUtil.getTarget(event);
+				
+				if(/[^\d]/.test(target.value)) {
+					target.style.backgroundColor = "red";
+				} else {
+					target.style.backgroundColor = "";
+				}
+			});
+		</script>
+	</body>
+</html>

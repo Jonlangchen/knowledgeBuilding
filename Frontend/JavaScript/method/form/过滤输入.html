@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>过滤输入</title>
+	</head>
+	<body>
+		<script src="../../eventUtil.js"></script>
+		<script>
+			// 屏蔽字符
+			// 1.在极端的情况下，可以通过下列代码屏蔽所有按键操作。
+			EventUtil.addHandler(textbox, "keypress", function(event) {
+				event = EventUtil.getEvent(event);
+				EventUtil.preventDefault(event);
+			});
+			
+			// 如果只想屏蔽特定的字符，则需要检测 keypress 事件对应的字符编码，然后再决
+			// 定如何响应。
+			// 事件处理程序就可以适用所有浏览器了，即可以屏蔽非数值字符，但不屏蔽那些也会
+			// 触发 keypress 事件的基本按键。
+			EventUtil.addHandler(textbox, "keypress", function(event) {
+				event = EventUtil.getEvent(event);
+				var charCode = EventUtil.getCharCode(event);
+				// 只允许用户输入数值。(最后还要添加一个检测条件，以确保用户没有按下 Ctrl 键)
+				if (!/\d/.test(String.fromCharCode(charCode)) && charCode > 9 &&
+					!event.ctrlKey) {
+					EventUtil.preventDefault(event);
+				}
+			});
+		</script>
+	</body>
+</html>

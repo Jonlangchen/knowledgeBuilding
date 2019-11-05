@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>基本用法</title>
+	</head>
+	<body>
+		<canvas id="drawing" width="200px" height="200px">A drawing of something.</canvas>
+		
+		<script>
+			// 要在这块画布（canvas）上绘图，需要取得绘图上下文。而取得绘图上下文对象的引
+			// 用，需要调用getContext()方法并传入上下文的名字。传入"2d"，就可以取得 2D 上
+			// 下文对象。
+			/*
+			var drawing = document.getElementById("drawing");
+			// 确定浏览器支持<canvas>元素
+			if (drawing.getContext) {
+				var context = drawing.getContext("2d");
+			}
+			*/
+			// 使用 toDataURL()方法，可以导出在<canvas>元素上绘制的图像。
+			/*
+			var drawing = document.getElementById("drawing");
+			// 确定浏览器支持<canvas>元素
+			if (drawing.getContext) {
+				var context = drawing.getContext("2d");
+				// 取得图像的数据 URI
+				var imgURI = drawing.toDataURL("image/png");
+				// 显示图像
+				var image = document.createElement("img");
+				image.src = imgURI;
+				document.body.appendChild(image);
+			}*/
+			
+			// 填充和描边
+			/*
+			var drawing = document.getElementById("drawing");
+			// 确定浏览器支持<canvas>元素
+			if (drawing.getContext) {
+				var context = drawing.getContext("2d");
+				context.strokeStyle = "red";
+				context.fillStyle = "#0000ff";
+			}
+			*/
+		 
+		 // 绘制填充矩形
+		 /*
+		 var drawing = document.getElementById("drawing");
+		 // 确定浏览器支持<canvas>元素
+		 if (drawing.getContext) {
+		 	var context = drawing.getContext("2d");
+			
+			// 绘制红色矩形
+			context.fillStyle = "#ff0000";
+			context.fillRect(10,10,50,50);
+			// 绘制半透明的蓝色矩形
+			context.fillStyle = "rgba(0,0,255,.5)";
+			context.fillRect(30,30,50,50);
+		 }*/
+		 
+		 // 绘制描边矩形
+		 /*
+		 var drawing = document.getElementById("drawing");
+		 // 确定浏览器支持<canvas>元素
+		 if (drawing.getContext) {
+		 	var context = drawing.getContext("2d");
+		 			
+		 			// 绘制红色矩形
+		 			context.strokeStyle = "#ff0000";
+		 			context.strokeRect(10,10,50,50);
+		 			// 绘制半透明的蓝色矩形
+		 			context.strokeStyle = "rgba(0,0,255,.5)";
+		 			context.strokeRect(30,30,50,50);
+		 }*/
+		 
+		 // clearRect()方法用于清除画布上的矩形区域。
+		 
+		 if (drawing.getContext) {
+		 	var context = drawing.getContext("2d");
+		 			
+		 			// 绘制红色矩形
+		 			context.fillStyle = "#ff0000";
+		 			context.fillRect(10,10,50,50);
+		 			// 绘制半透明的蓝色矩形
+		 			context.fillStyle = "rgba(0,0,255,.5)";
+		 			context.fillRect(30,30,50,50);
+					
+					// 在两个矩形重叠的地方清除一个小矩形
+					context.clearRect(40,40,10,10);
+		 }
+		</script>
+	</body>
+</html>

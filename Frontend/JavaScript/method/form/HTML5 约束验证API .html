@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML5 约束验证API </title>
+	</head>
+	<body>
+		<script>
+			// 1.必填字段
+			// 测试浏览器是否支持 required 属性。
+			var isRequiredSupported = "required" in document.createElement("input");
+			
+			// 在 JavaScript 中，通过对应的 required 属性，可以检查某个表单字段是否为必
+			// 填字段。
+			var isUsernameRequired = document.forms[0].elements["username"].required;
+			
+			// 2.输入模式
+			// 在 JavaScript 中可以通过 pattern 属性访问模式。
+			var pattern = document.forms[0].elements["count"].pattern;
+			// 可以检测浏览器是否支持 pattern 属性
+			var isPatternSupported = "pattern" in document.createElement("input");
+			
+			
+			// 3.检测有效性
+			// 使用 checkValidity()方法可以检测表单中的某个字段是否有效。
+			if (document.forms[0].elements[0].checkValidity()) {
+				// 字段有效,继续
+			} else {
+				// 字段无效
+			}
+			
+			// 要检测整个表单是否有效，可以在表单自身调用 checkValidity()方法。如果所有表
+			// 单字段都有效，这个方法返回 true；即使有一个字段无效，这个方法也会返回 false。
+			if (document.forms[0].checkValidity()) {
+				// 字段有效,继续
+			} else {
+				// 字段无效
+			}
+			
+			// validity 属性则会告诉你为什么字段有效或无效。
+			if (input.validity && !input.validity.valid){
+				if (input.validity.valueMissing){
+					alert("Please specify a value.")
+				} else if (input.validity.typeMismatch){
+					alert("Please enter an email address.");
+				} else {
+					alert("Value is invalid.");
+			 }
+			} 
+			
+			// 6.禁用验证
+			/*<form method="post" action="foo.php">
+			 <input type="submit" formnovalidate name="btnNoValidate"
+			 value="Non-validating Submit">
+			</form> */
+			//禁用验证
+			document.forms[0].elements["btnNoValidate"].formNoValidate = true; 
+		</script>
+	</body>
+</html>

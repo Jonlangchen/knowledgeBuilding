@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选择部分文本</title>
+	</head>
+	<body>
+		<script>
+			// 为了实现跨浏览器编程
+			// 要想在文本框中看到文本被选择的效果，必须让文本框获得焦点。
+			// selectText()函数接收三个参数：要操作的文本框、要选择文本中第一个字符的索引
+			// 和要选择文本中最后一个字符之后的索引。
+			function selecText(textbox, startIndex, stopIndex) {
+				if (textbox.setSelectionRange) {
+					textbox.setSelectionRange(startIndex, stopIndex);
+				} else if (textbox.createTextRange) {
+					var range = textbox.createTextRange();
+					range.collapse(true);
+					range.moveStart("character", startIndex);
+					range.moveEnd("character", stopIndex - startIndex);
+					range.select();
+				}
+				textbox.focus();
+			}
+		</script>
+	</body>
+</html>

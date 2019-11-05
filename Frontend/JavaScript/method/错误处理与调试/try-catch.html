@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>try-catch语句</title>
+	</head>
+	<body>
+		<script>
+			// try-catch语句 基本的语法
+			/*
+			try {
+				// 可能会导致错误的代码
+			} catch(error) {
+				// 在错误发生时怎么处理
+			}
+			*/
+		 
+			try {
+				window.someNonexistentFunction();
+			} catch (error) {
+				//alert("An error happend!");
+				alert(error.message);
+			}
+		 
+			// 将消息记录到当前页面
+			function log(message){
+				var console = document.getElementById("debuginfo");
+				if (console === null){
+					console = document.createElement("div");
+					console.id = "debuginfo";
+					console.style.background = "#dedede";
+					console.style.border = "1px solid silver";
+					console.style.padding = "5px";
+					console.style.width = "400px";
+					console.style.position = "absolute";
+					console.style.right = "0px";
+					console.style.top = "0px";
+					document.body.appendChild(console);
+				}
+				console.innerHTML += "<p>" + message + "</p>";
+			}
+		</script>
+	</body>
+</html>
