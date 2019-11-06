@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>离线应用与客户端存储</title>
+	</head>
+	<body>
+		<script>
+			// 1,离线检测
+			// 检测网络是否连通
+			if (navigator.onLine) {
+				console.log("网络正常工作");
+			} else {
+				console.log("网络离线");
+			}
+			
+			// 当网络从离线变为在线或者从在线变为离线时，分别触发这两个事件。这两个事
+			// 件在 window 对象上触发。
+			EventUtil.addHandler(window, "online", function() {
+				console.log("Online");
+			});
+			EventUtil.addHandler(window, "offline", function() {
+				console.log("Offline");
+			});
+			
+			// 应用缓存
+			// 使用一个描述文件（manifest file），列出要下载和缓存的资源。
+			CACHE MANIFEST
+			#Comment
+			
+			file.js
+			file.css
+			
+			// 要将描述文件与页面关联起来，可以在<html>中的 manifest 属性中指定这个文件的
+			// 路径，例如：
+			<html manifest="/offline.manifest"> 
+			
+			// 手动更新
+			applicationCache.update(); 
+			
+			// 如果触发了 updateready 事件，则说明新版本的应用缓存已经可用，而此时你需
+			// 要调用 swapCache()来启用新应用缓存。
+			EventUtil.addHandler(applicationCache, "updateready", function(){
+				applicationCache.swapCache();
+			}); 
+			
+			
+			// IndexedDB
+			var indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB ||
+			window.webkitIndexedDB; 
+			
+			// 1.打开 IndexedDB
+			var request, database;
+			request = indexedDB.open("admin");
+			request.onerror = function(event) {
+				console.log("Something bad happend while trying to open: " + 
+										event.target.errorCode);
+			};
+			request.onsuccess = function(event) {
+				database = event.target.result;
+			};
+			
+			// 为数据库指定一个版本号
+			if (database.version != "1.0") {
+				request = database.setVersion("1.0");
+				request.onerror = function(event) {
+					console.log("Something bad happend while trying to set version: " + 
+											event.target.errorCode);
+				};
+				request.onsuccess = function(event) {
+					console.log("Database initialization complete. Database name: " + 
+								database.name + ", Version: " + database.version);
+				};
+			} else {
+				console.log("Database already initialized. Database name: " + 
+								database.name + ", Version: " + database.version);
+			}
+			
+			// 对象存储空间
+			// 假设你要保存的用户记录由用户名、密码等组成，那么保存一条记录的对象应该类似
+			// 如下所示：
+			var user = {
+			 username: "007",
+			 firstName: "James",
+			 lastName: "Bond",
+			 password: "foo"
+			}; 
+			// 保存上述用户记录而创建对象存储空间的示例.
+			var store = db.createObjectStore("users", { keyPath: "username" });
+			
+			// users 中保存着一批用户对象
+			var i = 0,
+				request,
+				requests = [],
+				len = users.length;
+			
+			while(i < len) {
+				request = store.add(users[i++]);
+				request.onerror = function() {
+					// 处理错误
+				};
+				request.onsuccess = function() {
+					// 处理成功
+				};
+				requests.push(request);
+			}
+			// 事务
+			// 在最简单的情况下
+			var transaction = db.transaction();
+			
+			// 传入要访问的一个对象的存储空间
+			var transaction = db.transaction("users");
+			
+			// 要访问多个对象存储空间
+			var transaction = db.transaction(["user", "anotherStore"]);
+			
+			// 修改访问方式
+			var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+			
+			// 指定第二个参数
+			var transaction = db.transaction("users", IDBTransaction.READ_WRITE);
+		</script>
+	</body>
+</html>
