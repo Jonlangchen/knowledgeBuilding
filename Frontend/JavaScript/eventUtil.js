@@ -1,5 +1,19 @@
 // 5,跨浏览器的事件处理程序
 var EventUtil = {
+	// 设置多重 onload 属性
+	addOnload: function(newFunction) {
+		var oldOnload = window.onload; //存储已经设置的 window.onload
+		if (typeof oldOnload == "function") { //检查 oldOnload 变量的类型是不是函数
+			window.onload = function() {
+				if (oldOnload) { // 存在值
+					oldOnload();  // 先调用旧事件
+				}
+				newFunction();	// 再调用新事件
+			}
+		} else { // 未定义
+			window.onload = newFunction; // 就在页面完成加载时执行新函数
+		}
+	},
 	addHandler: function(element, type, handler){
 		if (element.addEventListener){
 			element.addEventListener(type, handler, false);
