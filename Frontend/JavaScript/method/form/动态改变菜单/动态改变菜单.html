@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动态改变菜单</title>
+	</head>
+	<body>
+		<form action="#">
+			<select name="" id="months">
+				<option value="">Month</option>
+				<option value="0">January</option>
+				<option value="1">February</option>
+				<option value="2">March</option>
+				<option value="3">April</option>
+				<option value="4">May</option>
+				<option value="5">June</option>
+				<option value="6">July</option>
+				<option value="7">August</option>
+				<option value="8">September</option>
+				<option value="9">October</option>
+				<option value="10">November</option>
+				<option value="11">December</option>
+			</select>
+			&nbsp;
+			<select name="" id="days">
+				<option value="">Day</option>
+			</select>
+		</form>
+		
+		<script>
+			window.onload = initForm;
+			
+			function initForm() {
+				var months = document.getElementById("months");
+				months.selectedIndex = 0;
+				months.onchange = populateDays;
+			}
+			
+			function populateDays() {
+				// 这个新数组包含对应于 12 个月的 12 个数字，即每个月的正确天数。
+				var monthDays = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+				// 我们使用 this（用户在第一个菜单中选择的月份）从菜单中获得值，并且将它存
+				// 储在 monthStr 中。
+				var monthStr = this.options[this.selectedIndex].value;
+				// 如果 monthStr 的值是""，那么用户就是在菜单中选择了单词 Month，而不
+				// 是月份名。
+				if (monthStr != "") {
+					var days = document.getElementById("days");
+					// 如果这个条件为真，那么用 parseInt 方法将 monthStr 转换为数字，
+					// 并且将变量 theMonth 设置为这个结果。
+					var theMonth = parseInt(monthStr);
+					// 在改变 Day 菜单时，首先将它的选项长度设置为零，这会消除以前操作的影响。
+					days.options.length = 0;
+					for(var i = 0; i < monthDays[theMonth]; i++) {
+						// 为每一天在菜单中添加一个新选项。
+						// 传递给 Option 的是 i+1，这使它显示1～31，而不是 0～30。
+						days.options[i] = new Option(i + 1);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
