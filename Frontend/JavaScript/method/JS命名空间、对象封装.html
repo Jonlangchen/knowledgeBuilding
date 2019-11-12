@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS命名空间、对象封装</title>
+	</head>
+	<body>
+		
+		<script>
+			var lib = lib || {}; //命名空间
+			lib.wgt = lib.wgt || {}; //命名空间
+			
+			(function (window, undefined) {
+				// 自定义的私有对象
+				var Dater = function (){}
+				// 外部可调用的对象
+				lib.wgt.Calendar = function(opts) {
+					return new Calendar(opts); //调用时省略 new 关键字
+				}
+				
+				var Calendar = function() {
+					//this.today = this.opts.today || new Date(); //属性
+					this.today = new Date(); //属性
+				}
+				// 公共实例方法
+				Calendar.prototype = {
+					// 方法: 初始化一个日历表
+					initPicker: function() {
+						// 调用私有实例方法
+						initEvent.call(this);
+						// 调用私有静态方法
+						getMonthList();
+					}
+				};
+				// 私有方法
+				function getMonthList(selected) {}
+				
+				// 公共静态方法
+				lib.wgt.Calendar.static = function() {}
+			})(window);
+			
+			var calendar = lib.wgt.Calendar({ // 初始化
+			    // 各种参数
+			});
+			calendar.initPicker(); // 实例方法调用
+			lib.wgt.Calendar.static(); // 静态方法调用
+		</script>
+	</body>
+</html>

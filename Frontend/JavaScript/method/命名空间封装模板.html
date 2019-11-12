@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>命名空间封装模板</title>
+	</head>
+	<body>
+		
+		<script>
+			(function () {
+				function $() {
+					alert("被调用到喽!");
+				}
+				// 注册命名空间 'myNameSpace' 到 window对象上
+				window["myNameSpace"] = {};
+				
+				// 把$函数注册到 'myNameSpace' 命名空间中
+				window["myNameSpace"]["$"] = $; 
+			})();
+		</script>
+	</body>
+</html>
