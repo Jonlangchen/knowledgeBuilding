@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>方法调用模式函数调用模式</title>
+	</head>
+	<body>
+		
+		<script>
+			var add = function (a, b) {
+				return a + b;
+			}
+			
+			// 方法调用模式
+			// 创建 myObject.它有一个 value 属性和一个 increment 方法.
+			// increment 方法接受一个可选的参数.如果参数不是数字,那么默认使用数字1.
+			
+			var myObject = {
+				value: 0,
+				increment: function (inc) {
+					this.value += typeof inc === "number" ? inc : 1;
+				}
+			}
+			
+			myObject.increment();
+			console.log(myObject.value);
+			
+			myObject.increment(2);
+			console.log(myObject.value);
+			
+			
+			// 函数调用模式
+			// 给 myObject 增加一个 double 方法.
+			myObject.double = function() {
+				var that = this; //解决不能共享改方法对对象的访问权,即 this 绑定错误
+				
+				var helper = function () {
+					that.value = add(that.value, that.value);
+				};
+				helper(); // 以函数的形式调用helper.
+			};
+			
+			myObject.double();
+			console.log(myObject.value);
+		</script>
+	</body>
+</html>

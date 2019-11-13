@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Apply调用模式</title>
+	</head>
+	<body>
+		<script>
+			var add = function (a, b) {
+				return a + b;
+			}
+			
+			// 构造一个包含两个数字的数组,并将它们相加
+			var array = [3, 4];
+			var sum = add.apply(null, array);
+			console.log(sum); //7
+			
+			// 构造一个包含 status 成员的对象
+			var statusObject = {
+				status: "A-OK"
+			};
+			
+			// 创建一个名为 Quo 的构造器函数.它构造一个带有 status 属性的对象.
+			var Quo = function(string) {
+				this.status = string;
+			};
+			
+			// 给 Quo 的所有实例提供一个名为 get_status 的公共方法.
+			Quo.prototype.get_status = function () {
+				return this.status;
+			};
+			
+			var status = Quo.prototype.get_status.apply(statusObject);
+			console.log(status); //A-OK
+		</script>
+	</body>
+</html>
