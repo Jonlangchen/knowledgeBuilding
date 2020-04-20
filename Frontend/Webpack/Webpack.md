@@ -143,3 +143,45 @@
 	 解析 JSON。
 	 
 	 最后：重新构建npm run build，并再次打开 index.html 文件.
+
+## 管理输出
+  --1.调整项目
+	 首先：在 /src 下添加 print.js 并添加一些逻辑,然后在 
+	 src/index.js 文件中使用这个函数。
+	 
+	 其次：更新 dist/index.html 文件，来为 webpack 分离入口做好
+	 准备。
+	 
+	 然后：在webpack.config.js文件下分离入口配置。
+	 在 entry 添加 src/print.js 作为新的入口起点（print），然后
+	 修改 output，以便根据入口起点名称动态生成 bundle 名称。
+	 
+	 最后：执行 npm run build。
+	 
+	--2.设定HtmlWebpackPlugin
+	 如果我们更改了我们的一个入口起点的名称，甚至添加了一个新的
+	 名称，会发生什么？生成的包将被重命名在一个构建中，但是我们
+	 的index.html文件仍然会引用旧的名字。我们用 
+	 HtmlWebpackPlugin 来解决这个问题。
+	 
+	 首先:安装插件，并且调整 webpack.config.js 文件：
+	 npm install --save-dev html-webpack-plugin
+	 
+	 最后：执行 npm run build。
+	 
+	--3.清理 /dist 文件夹
+	 clean-webpack-plugin插件每次构建前清理 /dist 文件夹。
+	 
+	 首先：安装插件，并且调整 webpack.config.js 文件：
+	 npm install --save-dev clear-webpack-plugin
+	 
+	 最后：执行 npm run build,再检查 /dist 文件夹,应该不会再看
+	 到旧的文件，只有构建后生成的文件！
+	 
+	--4.Manifest
+	 通过 manifest,webpack 能够对「你的模块映射到输出 bundle 的
+	 过程保持追踪即知道”应该哪些文件生成。可以仔细深入阅读 
+	 manifest 的概念页面，以及通过缓存指南来弄清如何与长期缓存相
+	 关联。
+	 
+	 待学习。。。
