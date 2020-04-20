@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'MyFont';
+	src: url('./moon.woff2') format('woff2'),
+	     url('./moon.woff') format('woff');
+}
+.hello {
+	font-family: 'MyFont';
+	color: red;
+	background: url('./10.png') no-repeat;
+}
