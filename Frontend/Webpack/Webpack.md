@@ -184,4 +184,51 @@
 	 manifest 的概念页面，以及通过缓存指南来弄清如何与长期缓存相
 	 关联。
 	 
-	 待学习。。。
+## 开发
+
+### 使用 source map
+ -为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码。
+ --使用 inline-source-map 选项，只用于开发环境。
+  首先，在 webpack.config.js 中添加 devtool: 'inline-source-map';
+	然后， 在 print.js 文件中生成一个错误；
+	最后：执行 npm run build。
+	
+### 选择一个开发工具
+ -webpack 中有几个不同的选项，可以帮助你在代码发生变化后自动编译代码：
+ --1、webpack's Watch Mode
+ --2、webpack-dev-server
+ --3、webpack-dev-middleware
+#### 使用观察模式
+ -首先添加一个用于启动 webpack 的观察模式的 npm script 脚本，在 package.json 下的对象
+	scripts 中 添加 "watch": "webpack --watch"
+ -然后,执行 npm run watch;
+ -最后，测试。先移除之前引入的错误，保存文件并检查终端窗口，可以看到 webpack 自动重新编译修改后的模块！
+ 备注：
+  唯一的缺点是，为了看到修改后的实际效果，你需要刷新浏览器。
+#### 使用 webpack-dev-server
+ -webpack-dev-server 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)。让我们设置以下：
+ --首先，安装 npm install --save-dev webpack-dev-server
+ --其次, 修改配置文件，告诉开发服务器(dev server)，在哪里查找文件：
+  在 webpack.config.js 下的 module 中添加 devServer: {contentBase: './dist'},
+	以上配置告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件。
+ --然后，添加一个 script 脚本，可以直接运行开发服务器(dev server)：
+ 在 webpack.config.js 下的 scripts 对象中添加 "start":"webpack-dev-server --open",
+ --最后，运行 npm start。
+#### 使用 webpack-dev-middleware
+ -webpack-dev-middleware 是一个容器(wrapper)，它可以把 webpack 处理后的文件传递给一个服务器(server)。 webpack-dev-server 在
+ 内部使用了它，同时，它也可以作为一个单独的包来使用.接下来是一个 webpack-dev-middleware 配合 express server 的示例。
+ --首先，安装 express 和 webpack-dev-middleware：
+  npm install --save-dev express webpack-dev-middleware
+ --然后，对 webpack 的配置文件做一些调整，以确保中间件(middleware)功能能够正确启用：
+  1、在 webpack.config.js 下的 output对象中添加 publicPath: '/';
+	 publicPath 也会在服务器脚本用到，以确保文件资源能够在 http://localhost:3000 下正确访问，我们稍后再设置端口号。
+	2、设置我们自定义的 express 服务：在文件目录下添加 server.js;
+	3、添加一个 npm script，以使我们更方便地运行服务: "server": "node server.js"
+ --最后，在终端执行 npm run server。
+#### 调整编辑器
+ -使用自动编译代码时，可能会在保存文件时遇到一些问题。某些编辑器具有“安全写入”功能，可能会影响重新编译。
+  要在一些常见的编辑器中禁用此功能，请查看以下列表：
+ --1、Sublime Text 3 - 在用户首选项(user preferences)中添加 atomic_save: "false"。
+ --2、IntelliJ - 在首选项(preferences)中使用搜索，查找到 "safe write" 并且禁用它。
+ --3、Vim - 在设置(settings)中增加 :set backupcopy=yes。
+ --4、WebStorm - 在 Preferences > Appearance & Behavior > System Settings 中取消选中 Use "safe write"
