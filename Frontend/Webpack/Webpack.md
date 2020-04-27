@@ -232,3 +232,47 @@
  --2、IntelliJ - 在首选项(preferences)中使用搜索，查找到 "safe write" 并且禁用它。
  --3、Vim - 在设置(settings)中增加 :set backupcopy=yes。
  --4、WebStorm - 在 Preferences > Appearance & Behavior > System Settings 中取消选中 Use "safe write"
+
+## 模块热替换
+ -模块热替换(Hot Module Replacement 或 HMR)是 webpack 提供的最有用的功能之一。它允许在运行时更新各种模
+ 块，而无需进行完全刷新
+### 启用HRM
+####  1、使用 webpack 内置的 HMR 插件
+ -首先，更新 webpack-dev-server 的配置，删除 print.js 的入口起点。
+  1、在webpack.config.js 中添加参数 const webpack = require('webpack');
+	2、在模块的入口entry中，删除 app: './src/index.js', 和 print: './src/print.js'，
+	 添加 app: './src/index.js'；
+	3、在 devServer 中添加 hot: true;
+	4、在 plugins 中添加 new webpack.NamedModulesPlugin() 与 new webpack.HotModuleReplacementPlugin()；
+-其次，通过在命令行中运行 npm start 来启动并运行 dev server。
+-然后，修改 index.js 文件，以便当 print.js 内部发生变更时可以告诉 webpack 接受更新的模块。
+ 在末尾添加：
+  if (module.hot) {
+    module.hot.accept('./print.js', function() {
+      console.log('Accepting the updated printMe module!');
+      printMe();
+    })
+  }
+ -最后，更改 print.js 中 console.log 的输出内容，你将会在浏览器中看到如下的输出。
+#### 2、通过 Node.js API 
+ -不是在 webpack.config.js 更改，而是添加个 dev-server.js,其他修改一样就能实现。
+## 问题
+  -为了让它与 HMR 正常工作，我们需要使用 module.hot.accept 更新绑定到新的 printMe 函数上：
+## HMR 修改样式表
+ -借助于 style-loader 的帮助，CSS 的模块热替换实际上是相当简单的。当更新 CSS 依赖模块时，
+ 此 loader 在后台使用 module.hot.accept 来修补(patch) <style> 标签。
+ --首先，使用以下命令安装两个 loader ：
+ npm install --save-dev style-loader css-loader
+ --其次，在 webpack.config.js 中更新 webpack 的配置，让这两个 loader 生效。
+ --再来，在 src下 添加样式表；
+ --然后，在 index.js 中引入，在启动npm start.
+ --最后，修改样式表。
+## 其他代码和框架
+ -社区还有许多其他 loader 和示例，可以使 HMR 与各种框架和库(library)平滑地进行交互……
+ --React Hot Loader：实时调整 react 组件。
+ --Vue Loader：此 loader 支持用于 vue 组件的 HMR，提供开箱即用体验。
+ --Elm Hot Loader：支持用于 Elm 程序语言的 HMR。
+ --Redux HMR：无需 loader 或插件！只需对 main store 文件进行简单的修改。
+ --Angular HMR：No loader necessary! A simple change to your main NgModule file is 
+ all that's required to have full control over the HMR APIs.没有必要使用 loader！只
+ 需对主要的 NgModule 文件进行简单的修改，由 HMR API 完全控制。
