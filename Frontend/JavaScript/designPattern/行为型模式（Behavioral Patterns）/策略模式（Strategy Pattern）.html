@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				策略模式简单描述就是：对象有某个行为，但是在不同的场景中，该行为有不同的实现算法。
+			
+				使用策略模式有以下优势：
+				
+				方便在运行时切换算法和策略
+				代码更简洁，避免使用大量的条件判断
+				关注分离，每个strategy类控制自己的算法逻辑，strategy和其使用者之间也相互独立
+			*/
+		  /**
+		   * 登录控制器
+		   */
+		  function LoginController() {
+		    this.strategy = undefined;
+		    this.setStrategy = function (strategy) {
+		      this.strategy = strategy;
+		      this.login = this.strategy.login;
+		    }
+		  }
+		  
+		  /**
+		   * 用户名、密码登录策略
+		   */
+		  function LocalStragegy() {
+		    this.login = ({ username, password }) => {
+		      console.log(username, password);
+		      // authenticating with username and password...
+		    }
+		  }
+		  
+		  /**
+		   * 手机号、验证码登录策略
+		   */
+		  function PhoneStragety() {
+		    this.login = ({ phone, verifyCode }) => {
+		      console.log(phone, verifyCode);
+		      // authenticating with hone and verifyCode...
+		    }
+		  }
+		  
+		  /**
+		   * 第三方社交登录策略
+		   */
+		  function SocialStragety() {
+		    this.login = ({ id, secret }) => {
+		      console.log(id, secret);
+		      // authenticating with id and secret...
+		    }
+		  }
+		  
+		  const loginController = new LoginController();
+		  
+		  // 调用用户名、密码登录接口，使用LocalStrategy
+		  app.use('/login/local', function (req, res) {
+		    loginController.setStrategy(new LocalStragegy());
+		    loginController.login(req.body);
+		  });
+		  
+		  // 调用手机、验证码登录接口，使用PhoneStrategy
+		  app.use('/login/phone', function (req, res) {
+		    loginController.setStrategy(new PhoneStragety());
+		    loginController.login(req.body);
+		  });
+		  
+		  // 调用社交登录接口，使用SocialStrategy
+		  app.use('/login/social', function (req, res) {
+		    loginController.setStrategy(new SocialStragety());
+		    loginController.login(req.body);
+		  });
+		</script>
+	</body>
+</html>
