@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>display: table-cell + vertical-align</title>
+		<style>
+			.wrap {
+				display: table-cell;
+				vertical-align: middle;
+				width: 200px;
+				height: 600px;
+				background-color: aqua;
+			}
+			.content {
+				width: 200px;
+				height: 200px;
+				background-color: blueviolet;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+			分析：设置display: table-cell的元素具有td元素的行为，它的子元素布局方式类似文本元素，
+			可以在父元素使用vertical-align: middle;实现子元素的垂直居中。
+			
+			注意：vertical-align属性具有继承性，导致父元素内文本也是垂直居中显示的。
+		 -->
+		<div class="wrap">
+			<div class="content"></div>
+		</div>
+	</body>
+</html>

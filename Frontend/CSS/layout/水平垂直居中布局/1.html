@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>定位 + transform</title>
+		<style>
+			.wrap {
+				position: relative;
+				width: 1200px;
+				height: 800px;
+				background-color: aqua;
+			}
+			.content {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 200px;
+				height: 200px;
+				background-color: blueviolet;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="content"></div>
+		</div>
+	</body>
+</html>

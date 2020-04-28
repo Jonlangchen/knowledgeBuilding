@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>display: block + margin: 0 auto</title>
+		<style>
+			.wrap {
+				width: 100%;
+				height: 200px;
+				background-color: aqua;
+			}
+			.content {
+				width: 200px;
+				height: 200px;
+				background-color: blueviolet;
+				display: table;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+			分析：这个方法只需要对子元素进行设置就可以实现水平居中，margin设置auto表示浏览器会
+			自动分配，实现来外边距等分效果。
+			
+			注意：这里子元素设置display为block或者table都是可以的，如果子元素脱离文档流（浮动，
+			定位），会导致margin属性的值无效。
+		 -->
+		<div class="wrap">
+			<div class="content"></div>
+		</div>
+	</body>
+</html>
